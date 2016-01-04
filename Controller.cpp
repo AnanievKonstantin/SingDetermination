@@ -17,7 +17,7 @@ Controller::Controller(int argc, char *argv[])
             cout << "Processing for: " << endl;
             cout << path << entry->d_name <<endl;
 
-            corrector.createImage(path + entry->d_name);
+            corrector.makeCorrection(path + entry->d_name);
         }
 
     }

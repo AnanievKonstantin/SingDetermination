@@ -19,10 +19,21 @@ class Correction
          *  создает cv::Mat
          * @param path
          *  Путь к избражению
+         * @return
+         * скорректированное изображение
          */
-        void createImage(string path);
+        cv::Mat makeCorrection(string path);
+
     private:
+
+        /**
+         * @brief createImage
+         *  создает cv::Mat из this->path для обработки
+         */
+        void createImage();
+        string path;
         cv::Mat sourceImage;
+        cv::Mat resultImage;
 };
 
 #endif // CORRECTION_H
