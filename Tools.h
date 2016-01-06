@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 /** Для работы с файловой системмой
   */

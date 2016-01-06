@@ -17,173 +17,53 @@ void Correction::createImage()
 
 void Correction::correctColorRange()
 {
-    cv::Mat imageInHSV;
+    cv::resize(sourceImage, sourceImage, sourceImage.size()*5,cv::INTER_NEAREST);
 
-    cv::imshow("SOURCE", this->sourceImage);
-
-//    cv::Mat sourceBin = this->sourceImage.clone();
-//    cv::cvtColor(sourceBin, sourceBin, CV_RGB2GRAY);
-//    cv::threshold(sourceBin, sourceBin, 127, 255, CV_THRESH_BINARY);
-//    this->increaseSizeIn(sourceBin, 3);
-//    cv::imshow("SOURCE BIN", sourceBin);
-
-    //cv::blur(this->sourceImage, this->sourceImage, cv::Size(3,3));
+    cv::imshow("Start", this->sourceImage);
 
     cv::xphoto::autowbGrayworld(this->sourceImage, this->sourceImage);
 
     //Чуткость ++
-//        const cv::Mat kernel = (cv::Mat_<double>(3,3) << -0.2,-0.2,-0.2,
-//                                                         -0.2,   3,-0.2,
-//                                                         -0.2,-0.2,-0.2);
-//        //cv::filter2D(sourceImage, sourceImage, sourceImage.depth(), kernel);
+        const cv::Mat kernel = (cv::Mat_<double>(3,3) << -0.1,-0.1,-0.1,
+                                                         -0.1,   2,-0.1,
+                                                         -0.1,-0.1,-0.1);
+    cv::filter2D(sourceImage, sourceImage, sourceImage.depth(), kernel);
+
+    //increaseContrast(sourceImage, 2);
 
 
 
-    //this->sourceImage *= 2;
-
-//    cv::Mat correctedSource = this->sourceImage.clone();
-//    cv::imshow("CSource", correctedSource);
-//    cv::cvtColor(correctedSource, correctedSource, CV_BGR2GRAY);
-//    cv::threshold(correctedSource, correctedSource, 127, 255, CV_THRESH_BINARY);
-//    this->increaseSizeIn(correctedSource, 3);
-//    cv::imshow("CSBin", correctedSource);
-
-
-    cv::cvtColor(this->sourceImage, imageInHSV, CV_BGR2HSV);
-
-    long midleValue = 0;
-
-    cv::MatIterator_<cv::Vec3b> it, end;
-    for( it = imageInHSV.begin<cv::Vec3b>(), end = imageInHSV.end<cv::Vec3b>(); it != end; ++it)
-    {
-        midleValue += (*it)[2];
-    }
-
-    midleValue /= (imageInHSV.cols * imageInHSV.rows);
-    cout << "MidleVAlue: " << midleValue <<"\n";
-
-
-    if(midleValue <=15)
-    {
-        for( it = imageInHSV.begin<cv::Vec3b>(), end = imageInHSV.end<cv::Vec3b>(); it != end; ++it)
-        {
-            (*it)[1] += (*it)[1]/3;
-            (*it)[2] += (*it)[2]/3;
-        }
-        cout<< "3 inc bright" <<endl;
-    }
-    else if(midleValue <=70)
-    {
-        for( it = imageInHSV.begin<cv::Vec3b>(), end = imageInHSV.end<cv::Vec3b>(); it != end; ++it)
-        {
-            (*it)[1] += (*it)[1]/4;
-            (*it)[2] += (*it)[2]/4;
-        }
-        cout<< "inc bright" <<endl;
-    }
-    else if(midleValue >=140)
-    {
-        for( it = imageInHSV.begin<cv::Vec3b>(), end = imageInHSV.end<cv::Vec3b>(); it != end; ++it)
-        {
-             (*it)[2] -= (*it)[2]/4;
-        }
-        cout<< "dec bright" <<endl;
-    }
-    else
-    {
-        cout<< "normal bright" <<endl;
-    }
-
-    for( it = imageInHSV.begin<cv::Vec3b>(), end = imageInHSV.end<cv::Vec3b>(); it != end; ++it)
-    {
-        //Yellow
-        if( ((*it)[1] >= 130) && (*it)[2] >= 100 && (*it)[0] >= 19 && (*it)[0] <= 39)
-        {
-            (*it)[0] = 30;
-            (*it)[1] = 254;
-            (*it)[2] = 254;
-            continue;
-        }
-
-        //Red
-        if( ((*it)[1] >= 130) && (*it)[2] >= 100 && (*it)[0] <= 5)
-        {
-            (*it)[0] = 0;
-            (*it)[1] = 254;
-            (*it)[2] = 254;
-            continue;
-
-        }
-
-        //white
-        if(((*it)[2] >= 80 && (*it)[1] <= 100))
-        {
-            (*it)[0] = 60;
-            (*it)[1] = 255;
-            (*it)[2] = 255;
-            continue;
-        }
-    }
-
-    cv::imshow("cHSV", imageInHSV);
-    cv::imshow("Bright", this->sourceImage);
-
-    cv::cvtColor(imageInHSV, this->sourceImage, CV_HSV2BGR);
-
-    cv::Mat gray;
-
-    cv::cvtColor(this->sourceImage, gray, CV_BGR2GRAY);
-    cv::threshold(gray, gray, 127,255,CV_THRESH_BINARY);
-
-    cv::imshow("Bin", gray);
+    /**
+     * @brief colors
+     * Пробдлема желтого и красного
+     * и 255 для желтого
+     *
+     *
+     *
+     *
+     *
+     *
+     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     */
 
 
 
 
 
 
-//    cv::Mat colorCorrectBRG;
-
-//    cv::cvtColor(imageInHSV, colorCorrectBRG, CV_HSV2BGR);
-//    cv::resize(colorCorrectBRG, colorCorrectBRG, colorCorrectBRG.size() * 3);
-
-//    cv::imshow("new BGR", colorCorrectBRG);
 
 
 
-//    vector<cv::Mat> channelsDefault;
+    vector<cv::Mat> colors = findRYW(sourceImage);
 
-//    cv::split(imageInHSV, channelsDefault);
-//    for(cv::Mat c: channelsDefault)
-//    {
-//        cv::threshold(c, c, 127, 255, CV_THRESH_BINARY);
-//        this->increaseSizeIn(c, 4);
-//    }
-
-//    //cv::Mat SandV;
-//    //cv::bitwise_and(channelsDefault[1].clone(), channelsDefault[2].clone(), SandV);
-
-//    //cv::imshow("SandV", SandV);
-
-//    cv::imshow("H default", channelsDefault[0]);
-//    cv::imshow("S default", channelsDefault[1]);
-//    cv::imshow("V default", channelsDefault[2]);
+    cv::imshow("Red", colors[0]);
+    cv::imshow("Yellow", colors[1]);
+    cv::imshow("White", colors[2]);
+    cv::imshow("END", sourceImage);
 
     cv::waitKey(0);
 
     cv::destroyAllWindows();
-
-    //cv::cvtColor(imageInHSV, this->resultImage, CV_HSV2BGR);
-
-
-
-
-    //cv::cvtColor(this->resultImage, this->resultImage, CV_BGR2GRAY);
-
-//    cv::adaptiveThreshold(this->resultImage, this->resultImage, 255, cv::ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY,15,-5);
-//    this->increaseSizeIn(this->resultImage, 3);
-
-    //this->showImage("Bin", this->resultImage);
 }
 
 void Correction::showImage(std::string name, cv::Mat &image)
@@ -194,10 +74,119 @@ void Correction::showImage(std::string name, cv::Mat &image)
     cv::destroyWindow(name);
 }
 
+bool Correction::isWhite(const cv::Vec3b &pixel)
+{
+    int BonG = pixel[0]/pixel[1];
+    int GonR = pixel[2]/pixel[1];
+
+    int delta = std::abs(BonG - GonR);
+    if(pixel[0] >= 127 && pixel[1] >= 127 && pixel[2] >= 127)
+    {
+        return true;
+    }
+    else if(delta >= 0 && delta <=10)
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Correction::isRed(const cv::Vec3b &pixel)
+{
+    if(pixel[0] <= 127 && pixel[1] <= 127 && pixel[2] >= 127)
+    {
+        return true;
+    }
+    else if(pixel[2] >= pixel[0]*2 && pixel[2] >= pixel[1]*2)
+    {
+        return true;
+    }
+    else if(pixel[2] >= pixel[0]/3 + pixel[0] && pixel[2] >= pixel[1]/3 + pixel[1])
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Correction::isYellow(const cv::Vec3b &pixel)
+{
+    if(pixel[2] > pixel[1] && pixel[1] > pixel[0])
+    {
+        return true;
+    }
+    else if(pixel[0] <= 127 && pixel[1] >= 127 && pixel[2] >= 127)
+    {
+        return true;
+    }
+
+    else
+        return false;
+}
+
 void Correction::increaseSizeIn(cv::Mat &image, int multiplier)
 {
     cv::resize(image, image, image.size() * multiplier);
 }
+
+void Correction::increaseContrast(cv::Mat &image, double alpha)
+{
+    if(alpha < 1 || alpha > 3)
+    {
+        throw std::invalid_argument("alpha most be in [1.0, 3.0]");
+    }
+
+    for( int y = 0; y < image.rows; y++ )
+    {
+        for( int x = 0; x < image.cols; x++ )
+        {
+            for( int c = 0; c < 3; c++ )
+            {
+                image.at<cv::Vec3b>(y,x)[c] = cv::saturate_cast<uchar>( alpha*(image.at<cv::Vec3b>(y,x)[c] ));
+            }
+        }
+    }
+}
+
+vector<cv::Mat> &Correction::findRYW(const cv::Mat &image)
+{
+    cv::MatIterator_<cv::Vec3b> itR,itY,itW;
+    cv::MatConstIterator_<cv::Vec3b> it, end;
+    vector<cv::Mat> * colors = new vector<cv::Mat>(3);
+    colors->at(0) = image.clone();//Red
+    colors->at(1) = image.clone();//Yellow
+    colors->at(2) = image.clone();//White
+
+    for( it = image.begin<cv::Vec3b>(),
+         itR = colors->at(0).begin<cv::Vec3b>(),
+         itY = colors->at(1).begin<cv::Vec3b>(),
+         itW = colors->at(2).begin<cv::Vec3b>(),
+         end = image.end<cv::Vec3b>(); it != end; ++it,++itR,++itY,++itW)
+    {
+        if(isRed(*it))
+        {
+            (*itR)[0] = 0;
+            (*itR)[1] = 0;
+            (*itR)[2] = 255;
+        }
+        else if(isYellow(*it))
+        {
+            (*itY)[0] = 0;
+            (*itY)[1] = 255;
+            (*itY)[2] = 255;
+        }
+        else if(isWhite(*it))
+        {
+            (*itW)[0] = 255;
+            (*itW)[1] = 255;
+            (*itW)[2] = 255;
+        }
+    }
+    return * colors;
+}
+
+
 
 cv::Mat Correction::makeCorrection(std::string path)
 {
