@@ -15,57 +15,6 @@ void Correction::createImage()
     this->sourceImage = cv::imread(this->path);
 }
 
-void Correction::correctColorRange()
-{
-    cv::resize(sourceImage, sourceImage, sourceImage.size()*5,cv::INTER_NEAREST);
-
-    cv::imshow("Start", this->sourceImage);
-
-    cv::xphoto::autowbGrayworld(this->sourceImage, this->sourceImage);
-
-    //Чуткость ++
-        const cv::Mat kernel = (cv::Mat_<double>(3,3) << -0.1,-0.1,-0.1,
-                                                         -0.1,   2,-0.1,
-                                                         -0.1,-0.1,-0.1);
-    cv::filter2D(sourceImage, sourceImage, sourceImage.depth(), kernel);
-
-    //increaseContrast(sourceImage, 2);
-
-
-
-    /**
-     * @brief colors
-     * Пробдлема желтого и красного
-     * и 255 для желтого
-     *
-     *
-     *
-     *
-     *
-     *
-     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     */
-
-
-
-
-
-
-
-
-
-    vector<cv::Mat> colors = findRYW(sourceImage);
-
-    cv::imshow("Red", colors[0]);
-    cv::imshow("Yellow", colors[1]);
-    cv::imshow("White", colors[2]);
-    cv::imshow("END", sourceImage);
-
-    cv::waitKey(0);
-
-    cv::destroyAllWindows();
-}
-
 void Correction::showImage(std::string name, cv::Mat &image)
 {
     cv::imshow(name, image);
@@ -76,20 +25,21 @@ void Correction::showImage(std::string name, cv::Mat &image)
 
 bool Correction::isWhite(const cv::Vec3b &pixel)
 {
-    int BonG = pixel[0]/pixel[1];
-    int GonR = pixel[2]/pixel[1];
+    int BonG = pixel[0] - pixel[1];
+    int GonR = pixel[1] - pixel[2];
 
     int delta = std::abs(BonG - GonR);
     if(pixel[0] >= 127 && pixel[1] >= 127 && pixel[2] >= 127)
     {
         return true;
     }
-    else if(delta >= 0 && delta <=10)
-    {
-        return true;
-    }
-    else
-        return false;
+
+//    if(delta >= 0 && delta <=10)
+//    {
+//        return true;
+//    }
+
+    return false;
 }
 
 bool Correction::isRed(const cv::Vec3b &pixel)
@@ -98,31 +48,33 @@ bool Correction::isRed(const cv::Vec3b &pixel)
     {
         return true;
     }
-    else if(pixel[2] >= pixel[0]*2 && pixel[2] >= pixel[1]*2)
+
+    if(pixel[2] >= pixel[0]*2 && pixel[2] >= pixel[1]*2)
     {
         return true;
     }
-    else if(pixel[2] >= pixel[0]/3 + pixel[0] && pixel[2] >= pixel[1]/3 + pixel[1])
+
+    if(pixel[2] >= pixel[0]/3 + pixel[0] && pixel[2] >= pixel[1]/3 + pixel[1])
     {
         return true;
     }
-    else
-        return false;
+
+    return false;
 }
 
 bool Correction::isYellow(const cv::Vec3b &pixel)
 {
-    if(pixel[2] > pixel[1] && pixel[1] > pixel[0])
-    {
-        return true;
-    }
-    else if(pixel[0] <= 127 && pixel[1] >= 127 && pixel[2] >= 127)
+    if(pixel[2] >= pixel[1] && pixel[1] > pixel[0])
     {
         return true;
     }
 
-    else
-        return false;
+    if(pixel[0] <= 127 && pixel[1] >= 127 && pixel[2] >= 127)
+    {
+        return true;
+    }
+
+    return false;
 }
 
 void Correction::increaseSizeIn(cv::Mat &image, int multiplier)
@@ -149,6 +101,61 @@ void Correction::increaseContrast(cv::Mat &image, double alpha)
     }
 }
 
+void Correction::increaseClarity(cv::Mat &image)
+{
+
+    const cv::Mat kernel = (cv::Mat_<double>(3,3) << -0.1,-0.1,-0.1,
+                                                     -0.1,   2,-0.1,
+                                                     -0.1,-0.1,-0.1);
+    cv::filter2D(image, image, image.depth(), kernel);
+}
+
+int Correction::bright(cv::Mat &image)
+{
+    cv::MatConstIterator_<cv::Vec3b> it, end;
+
+    long value = 0;
+    for( it = image.begin<cv::Vec3b>(),end = image.end<cv::Vec3b>(); it != end; ++it)
+    {
+        value += (*it)[2];
+    }
+
+    long dValue = value/(image.cols*image.rows);
+
+    if(dValue <= 85)
+        return 1;
+    if(dValue >= 170)
+        return 2;
+    if(dValue > 85 && dValue < 170)
+        return 3;
+}
+
+void Correction::normalizeBright(cv::Mat &image)
+{
+
+
+    cv::MatIterator_<cv::Vec3b> it, end;
+    switch(bright(image))
+    {
+        case 3:
+        break;
+
+        case 1:
+            for( it = image.begin<cv::Vec3b>(),end = image.end<cv::Vec3b>(); it != end; ++it)
+            {
+                 (*it)[2] += (*it)[2]/3;
+            }
+        break;
+
+        case 2:
+            for( it = image.begin<cv::Vec3b>(),end = image.end<cv::Vec3b>(); it != end; ++it)
+            {
+                 (*it)[2] -= (*it)[2]/3;
+            }
+        break;
+    }
+}
+
 vector<cv::Mat> &Correction::findRYW(const cv::Mat &image)
 {
     cv::MatIterator_<cv::Vec3b> itR,itY,itW;
@@ -170,13 +177,15 @@ vector<cv::Mat> &Correction::findRYW(const cv::Mat &image)
             (*itR)[1] = 0;
             (*itR)[2] = 255;
         }
-        else if(isYellow(*it))
+
+        if(isYellow(*it))
         {
             (*itY)[0] = 0;
             (*itY)[1] = 255;
             (*itY)[2] = 255;
         }
-        else if(isWhite(*it))
+
+        if(isWhite(*it))
         {
             (*itW)[0] = 255;
             (*itW)[1] = 255;
@@ -193,7 +202,33 @@ cv::Mat Correction::makeCorrection(std::string path)
     this->path = path;
     this->createImage();
 
-    this->correctColorRange();
+    cv::resize(sourceImage, sourceImage, sourceImage.size()*5,cv::INTER_NEAREST);
+
+    cv::imshow("Start", this->sourceImage);
+
+    cv::xphoto::autowbGrayworld(this->sourceImage, this->sourceImage);
+
+    increaseClarity(sourceImage);
+
+    cv::cvtColor(sourceImage, imageHSV, CV_BGR2HSV);
+
+    normalizeBright(imageHSV);
+
+    cv::cvtColor(imageHSV, sourceImage, CV_HSV2BGR);
+
+    increaseContrast(sourceImage, 2);
+
+    cv::imshow("Correct", this->sourceImage);
+
+    vector<cv::Mat> colors = findRYW(sourceImage);
+
+    cv::imshow("Red", colors[0]);
+    cv::imshow("Yellow", colors[1]);
+    cv::imshow("White", colors[2]);
+
+    cv::waitKey(0);
+
+    cv::destroyAllWindows();
 
     return this->resultImage;
 }

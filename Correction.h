@@ -34,12 +34,6 @@ class Correction
         void createImage();
 
         /**
-         * @brief correctColorRange
-         *  Ищит желтые, красные элементы и делает их максимально насыщенными
-         */
-        void correctColorRange();
-
-        /**
          * @brief showImage
          *  Выводит изображение на экран и ожидает нажатия любой клавиши для закрытия
          * @param image
@@ -100,6 +94,34 @@ class Correction
          *  коэффициент увеличения alpha in [1.0, 3.0]
          */
         void increaseContrast(cv::Mat & image, double alpha);
+
+        /**
+         * @brief increaseClarity
+         *  увеличивает четкочть изображения
+         * @param image
+         *  изображение для увеличения четкости
+         */
+        void increaseClarity(cv::Mat & image);
+
+        /**
+         * @brief isDim
+         *  Определяет является ли изображение тусклым, ярким или оптимальным (не тускло не ярко)
+         * @param image
+         *  Изображение в HSV
+         * @return
+         *  1 если среднее Value изображения <= 85
+         *  2 если среднее Value изображения >= 170
+         *  3 если среднее Value изображения принадлежит (85, 170)
+         */
+        int bright(cv::Mat & image);
+
+        /**
+         * @brief normalizeBright
+         *  нормализует параметр яркости изображения - делает ярче или тусклее
+         * @param image
+         *  Изображение в HSV
+         */
+        void normalizeBright(cv::Mat & image);
 
 
         /**
