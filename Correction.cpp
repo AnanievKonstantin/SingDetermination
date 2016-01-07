@@ -19,7 +19,6 @@ void Correction::showImage(std::string name, cv::Mat &image)
 {
     cv::imshow(name, image);
     cv::waitKey(0);
-
     cv::destroyWindow(name);
 }
 
@@ -175,12 +174,24 @@ vector<cv::Mat> &Correction::findRYW(const cv::Mat &image)
             (*itR)[1] = 0;
             (*itR)[2] = 255;
         }
+        else
+        {
+            (*itR)[0] = 0;
+            (*itR)[1] = 0;
+            (*itR)[2] = 0;
+        }
 
         if(isYellow(*it))
         {
             (*itY)[0] = 0;
             (*itY)[1] = 255;
             (*itY)[2] = 255;
+        }
+        else
+        {
+            (*itY)[0] = 0;
+            (*itY)[1] = 0;
+            (*itY)[2] = 0;
         }
 
         if(isWhite(*it))
@@ -189,8 +200,12 @@ vector<cv::Mat> &Correction::findRYW(const cv::Mat &image)
             (*itW)[1] = 255;
             (*itW)[2] = 255;
         }
-
-
+        else
+        {
+            (*itW)[0] = 0;
+            (*itW)[1] = 0;
+            (*itW)[2] = 0;
+        }
     }
     return * colors;
 }
@@ -205,15 +220,16 @@ vector<cv::Mat> * Correction::makeCorrection(std::string path)
     correctionResult = new vector<cv::Mat>;
     correctionResult->reserve(6);
 
-    correctionResult->push_back(sourceImage.clone()); //source
 
     cv::resize(sourceImage, sourceImage, sourceImage.size()*5,cv::INTER_NEAREST);
 
-    cv::imshow("Start", this->sourceImage);
+//    cv::imshow("Start", this->sourceImage);
 
     cv::xphoto::autowbGrayworld(this->sourceImage, this->sourceImage);
 
     increaseClarity(sourceImage);
+
+    correctionResult->push_back(sourceImage.clone()); //source
 
     cv::Mat contrast = sourceImage.clone();
 
@@ -225,17 +241,17 @@ vector<cv::Mat> * Correction::makeCorrection(std::string path)
 
     correctionResult->push_back(sourceImage.clone()); //bright
 
-    increaseContrast(colors,2);
+    increaseContrast(contrast, 2);
 
-    correctionResult->push_back(colors.clone()); //contrast
+    correctionResult->push_back(contrast.clone()); //contrast
 
-    cv::imshow("Correct", this->sourceImage);
+//    cv::imshow("Correct", this->sourceImage);
 
     vector<cv::Mat> colors = findRYW(sourceImage);
 
-    cv::imshow("Red", colors[0]);
-    cv::imshow("Yellow", colors[1]);
-    cv::imshow("White", colors[2]);
+//    cv::imshow("Red", colors[0]);
+//    cv::imshow("Yellow", colors[1]);
+//    cv::imshow("White", colors[2]);
 
     //reg yellow white
     correctionResult->insert(correctionResult->end(), colors.begin(),colors.end());

@@ -145,7 +145,7 @@ class Correction
 
         string path;
         cv::Mat sourceImage;
-        vector<cv::Mat> * correctionResult;
+        vector<cv::Mat> * correctionResult = nullptr;
 };
 
 #endif // CORRECTION_H

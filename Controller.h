@@ -3,6 +3,7 @@
 
 #include <Tools.h>
 #include <Correction.h>
+#include <SearchOutlines.h>
 
 class Controller
 {
