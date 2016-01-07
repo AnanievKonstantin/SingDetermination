@@ -6,7 +6,7 @@
 /**
  * @brief The Correction class
  * Анализирует поступившее изображение и корректирует его для дальнейшего распохнования
- * Увеличивает размер, нормализует цвета, увеличивает яркость.
+ * Увеличивает размер, нормализует цвета, увеличивает-уменьшает яркость, четкость и контраст, выделяет желтый, красный, белый.
  */
 class Correction
 {
@@ -20,9 +20,15 @@ class Correction
          * @param path
          *  Путь к избражению
          * @return
-         * скорректированное изображение
+         * массив скорректированных изображений
+         * vector[0] - исходное
+         * vector[1] - яркое
+         * vector[2] - контрасное
+         * vector[3] - с выделенным красным
+         * vector[4] - с выделенным жёлтым
+         * vector[5] - с выделенным белым
          */
-        cv::Mat makeCorrection(string path);
+        vector<cv::Mat> * makeCorrection(string path);
 
 
     private:
@@ -139,11 +145,7 @@ class Correction
 
         string path;
         cv::Mat sourceImage;
-        cv::Mat imageHSV;
-
-
-
-        cv::Mat resultImage;
+        vector<cv::Mat> * correctionResult;
 };
 
 #endif // CORRECTION_H

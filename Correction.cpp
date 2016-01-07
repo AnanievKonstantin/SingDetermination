@@ -28,7 +28,7 @@ bool Correction::isWhite(const cv::Vec3b &pixel)
     int BonG = pixel[0] - pixel[1];
     int GonR = pixel[1] - pixel[2];
 
-    int delta = std::abs(BonG - GonR);
+    //int delta = std::abs(BonG - GonR);
     if(pixel[0] >= 127 && pixel[1] >= 127 && pixel[2] >= 127)
     {
         return true;
@@ -132,8 +132,6 @@ int Correction::bright(cv::Mat &image)
 
 void Correction::normalizeBright(cv::Mat &image)
 {
-
-
     cv::MatIterator_<cv::Vec3b> it, end;
     switch(bright(image))
     {
@@ -191,16 +189,23 @@ vector<cv::Mat> &Correction::findRYW(const cv::Mat &image)
             (*itW)[1] = 255;
             (*itW)[2] = 255;
         }
+
+
     }
     return * colors;
 }
 
-
-
-cv::Mat Correction::makeCorrection(std::string path)
+vector<cv::Mat> * Correction::makeCorrection(std::string path)
 {
     this->path = path;
     this->createImage();
+
+    cv::Mat imageHSV;
+
+    correctionResult = new vector<cv::Mat>;
+    correctionResult->reserve(6);
+
+    correctionResult->push_back(sourceImage.clone()); //source
 
     cv::resize(sourceImage, sourceImage, sourceImage.size()*5,cv::INTER_NEAREST);
 
@@ -210,13 +215,19 @@ cv::Mat Correction::makeCorrection(std::string path)
 
     increaseClarity(sourceImage);
 
+    cv::Mat contrast = sourceImage.clone();
+
     cv::cvtColor(sourceImage, imageHSV, CV_BGR2HSV);
 
     normalizeBright(imageHSV);
 
     cv::cvtColor(imageHSV, sourceImage, CV_HSV2BGR);
 
-    increaseContrast(sourceImage, 2);
+    correctionResult->push_back(sourceImage.clone()); //bright
+
+    increaseContrast(colors,2);
+
+    correctionResult->push_back(colors.clone()); //contrast
 
     cv::imshow("Correct", this->sourceImage);
 
@@ -226,9 +237,12 @@ cv::Mat Correction::makeCorrection(std::string path)
     cv::imshow("Yellow", colors[1]);
     cv::imshow("White", colors[2]);
 
+    //reg yellow white
+    correctionResult->insert(correctionResult->end(), colors.begin(),colors.end());
+
     cv::waitKey(0);
 
     cv::destroyAllWindows();
 
-    return this->resultImage;
+    return correctionResult;
 }
