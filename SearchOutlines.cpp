@@ -15,6 +15,8 @@ void SearchOutlines::search(const vector<cv::Mat> * correctedPictures)
 
     binaryImages = createBin();
 
+    //showPictures("Bin ", binaryImages);
+
     hsvBinChannelsFromSource = createBinaryHSVChannelsFrom(correctedPictures->at(0));
     hsvBinChannelsFromBright = createBinaryHSVChannelsFrom(correctedPictures->at(1));
     hsvBinChannelsFromContrast = createBinaryHSVChannelsFrom(correctedPictures->at(2));
@@ -117,7 +119,8 @@ void SearchOutlines::findContours()
 
     for(cv::Mat & image: *binaryImages)
     {
-        cv::Canny(image, cannyOut, 0, 254);
+        //ERROR --> нужно настроить поиск контуров
+        cv::Canny(image, cannyOut, 200, 255);
         contours = new vector<vector<cv::Point>>();
         hierarhy = new vector<cv::Vec4i>();
         cv::findContours(cannyOut, *contours, *hierarhy,
@@ -166,25 +169,28 @@ void SearchOutlines::findContours()
 
 void SearchOutlines::drawContours()
 {
+    cv::Mat toSize = grayScaleImages->at(0);
+    cv::RNG r;
+
+    int count = 0;
+
     for(Storrage * data: *infoContours)
     {
-        cv::Mat drawing;
-        for( int i = 0; i< data->getContours()->size(); i++ )
+        cv::Mat drawing = cv::Mat::zeros(toSize.size(),CV_8UC3);
+
+        for( int i = 0; i < data->getContours()->size(); i++ )
         {
-            cv::RNG r;
             cv::Scalar color = cv::Scalar( r.uniform(0, 255),
                                            r.uniform(0, 255),
                                            r.uniform(0, 255));
 
-            cv::drawContours(drawing, *data->getContours(), i, color, 2, 8, *data->getHierarhy(), 0, cv::Point());
-
-            //ERROR --> !!!
-            cv::imshow("Contours", drawing);
+            cv::drawContours(drawing, *data->getContours(), i, color, 1, 8, *data->getHierarhy(), 0, cv::Point());
         }
+
+        cv::imshow("Contours: " + std::to_string(count), drawing);
+        cv::waitKey(0);
+        count++;
     }
-
-    cv::waitKey(0);
-
 }
 
 
