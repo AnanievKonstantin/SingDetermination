@@ -7,7 +7,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     Correction.cpp \
     Controller.cpp \
-    SearchOutlines.cpp
+    SearchOutlines.cpp \
+    Storrage.cpp
 
 LIBS += -L /usr/local/lib/libopencv_cudev.so.3.1.0
 LIBS += -L /usr/local/lib/libopencv_core.so.3.1.0
@@ -72,5 +73,6 @@ HEADERS += \
     Correction.h \
     Tools.h \
     Controller.h \
-    SearchOutlines.h
+    SearchOutlines.h \
+    Storrage.h
 

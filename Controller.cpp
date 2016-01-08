@@ -2,7 +2,7 @@
 
 Controller::Controller(int argc, char *argv[])
 {
-    string path = "/home/takava/Documents/Study/Works/individual/";
+    string path = "/home/takava/Documents/Study/Works/individual/D/";
     DIR * folder = opendir(path.c_str());
     struct dirent * entry;
     string checkType;
@@ -10,7 +10,7 @@ Controller::Controller(int argc, char *argv[])
     Correction corrector;
     SearchOutlines searcher;
 
-    while((entry = readdir(folder)) != nullptr)
+    while((entry = readdir(folder)) != NULL)
     {
         checkType = entry->d_name;
         if(checkType.substr(checkType.find_last_of(".") + 1) == "ppm")

@@ -14,12 +14,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
 #include <cmath>
 
 /** Для работы с файловой системмой
   */
 #include <dirent.h>
 
+using std::list;
 using std::vector;
 using std::string;
 using std::cout;

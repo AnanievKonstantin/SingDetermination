@@ -7,8 +7,6 @@ SearchOutlines::SearchOutlines()
 
 SearchOutlines::~SearchOutlines()
 {
-    delete this->grayScaleImages;
-    delete this->binaryImages;
 }
 
 void SearchOutlines::search(const vector<cv::Mat> * correctedPictures)
@@ -22,19 +20,36 @@ void SearchOutlines::search(const vector<cv::Mat> * correctedPictures)
 
     binaryImages = createBin();
 
-    showPictures(binaryImages);
+    //showPictures(binaryImages);
+
+
+    hsvChannelsFromSource = createBinaryHSVChannelsFrom(correctedPictures->at(0));
+    hsvChannelsFromBright = createBinaryHSVChannelsFrom(correctedPictures->at(1));
+    hsvChannelsFromContrast = createBinaryHSVChannelsFrom(correctedPictures->at(2));
+
+    showPictures("Bright ", hsvChannelsFromBright);
+    showPictures("Contrast ", hsvChannelsFromContrast);
+    showPictures("Source ",hsvChannelsFromSource);
 
     cv::waitKey(0);
 
     cv::destroyAllWindows();
+
+
+
+    delete this->grayScaleImages;
+    delete this->binaryImages;
+    delete this->hsvChannelsFromBright;
+    delete this->hsvChannelsFromContrast;
+    delete this->hsvChannelsFromSource;
 }
 
-void SearchOutlines::showPictures(const vector<cv::Mat> * const pictures)
+void SearchOutlines::showPictures(string name,const vector<cv::Mat> * const pictures)
 {
-    int i = 0;
+    static int i = 0;
     for(const cv::Mat & image: *pictures)
     {
-        cv::imshow(std::to_string(i), image);
+        cv::imshow(name+":"+std::to_string(i), image);
         i++;
     }
 }
@@ -75,3 +90,36 @@ vector<cv::Mat> *SearchOutlines::createBin()
 
     return binImages;
 }
+
+vector<cv::Mat> *SearchOutlines::createBinaryHSVChannelsFrom(const cv::Mat &image)
+{
+    cv::Mat imageHSV = image.clone();
+    vector<cv::Mat> * chanels = new vector<cv::Mat>;
+    cv::cvtColor(image, imageHSV, CV_BGR2HSV);
+    cv::split(imageHSV, *chanels);
+
+    for(cv::Mat & image: *chanels)
+    {
+        cv::threshold(image, image, 127, 255, CV_THRESH_BINARY);
+    }
+
+    return chanels;
+}
+
+void SearchOutlines::findContours()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
