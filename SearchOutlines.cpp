@@ -11,37 +11,32 @@ SearchOutlines::~SearchOutlines()
 
 void SearchOutlines::search(const vector<cv::Mat> * correctedPictures)
 {
-
-    //showPictures(correctedPictures);
-
     grayScaleImages = createGrayScale(correctedPictures);
-
-    //showPictures(grayScaleImages);
 
     binaryImages = createBin();
 
-    //showPictures(binaryImages);
+    hsvBinChannelsFromSource = createBinaryHSVChannelsFrom(correctedPictures->at(0));
+    hsvBinChannelsFromBright = createBinaryHSVChannelsFrom(correctedPictures->at(1));
+    hsvBinChannelsFromContrast = createBinaryHSVChannelsFrom(correctedPictures->at(2));
 
+    findContours();
 
-    hsvChannelsFromSource = createBinaryHSVChannelsFrom(correctedPictures->at(0));
-    hsvChannelsFromBright = createBinaryHSVChannelsFrom(correctedPictures->at(1));
-    hsvChannelsFromContrast = createBinaryHSVChannelsFrom(correctedPictures->at(2));
+    //showPictures("Bright ", hsvBinChannelsFromBright);
+    //showPictures("Contrast ", hsvBinChannelsFromContrast);
+    //showPictures("Source ",hsvBinChannelsFromSource);
 
-    showPictures("Bright ", hsvChannelsFromBright);
-    showPictures("Contrast ", hsvChannelsFromContrast);
-    showPictures("Source ",hsvChannelsFromSource);
+    drawContours();
 
     cv::waitKey(0);
 
     cv::destroyAllWindows();
 
-
-
     delete this->grayScaleImages;
     delete this->binaryImages;
-    delete this->hsvChannelsFromBright;
-    delete this->hsvChannelsFromContrast;
-    delete this->hsvChannelsFromSource;
+    delete this->hsvBinChannelsFromBright;
+    delete this->hsvBinChannelsFromContrast;
+    delete this->hsvBinChannelsFromSource;
+    delete this->infoContours;
 }
 
 void SearchOutlines::showPictures(string name,const vector<cv::Mat> * const pictures)
@@ -108,6 +103,73 @@ vector<cv::Mat> *SearchOutlines::createBinaryHSVChannelsFrom(const cv::Mat &imag
 
 void SearchOutlines::findContours()
 {
+    vector<vector<cv::Point>> * contours = nullptr;
+    vector<cv::Vec4i> * hierarhy = nullptr;
+    cv::Mat cannyOut;
+
+    for(cv::Mat & image: *binaryImages)
+    {
+        cv::Canny(image, cannyOut, 0, 254);
+        contours = new vector<vector<cv::Point>>();
+        hierarhy = new vector<cv::Vec4i>();
+        cv::findContours(cannyOut, *contours, *hierarhy,
+                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
+
+        //----> ERROR Storrage outlines(contours, hierarhy);
+        infoContours->(outlines);
+    }
+
+    for(cv::Mat & image: *hsvBinChannelsFromSource)
+    {
+        cv::Canny(image, cannyOut, 0, 254);
+        contours = new vector<vector<cv::Point>>();
+        hierarhy = new vector<cv::Vec4i>();
+        cv::findContours(cannyOut, *contours, *hierarhy,
+                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
+
+        infoContours->push_back(Storrage(contours, hierarhy));
+    }
+
+    for(cv::Mat & image: *hsvBinChannelsFromContrast)
+    {
+        cv::Canny(image, cannyOut, 0, 254);
+        contours = new vector<vector<cv::Point>>();
+        hierarhy = new vector<cv::Vec4i>();
+        cv::findContours(cannyOut, *contours, *hierarhy,
+                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
+
+        infoContours->push_back(Storrage(contours, hierarhy));
+    }
+
+    for(cv::Mat & image: *hsvBinChannelsFromBright)
+    {
+        cv::Canny(image, cannyOut, 0, 254);
+        contours = new vector<vector<cv::Point>>();
+        hierarhy = new vector<cv::Vec4i>();
+        cv::findContours(cannyOut, *contours, *hierarhy,
+                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
+
+        infoContours->push_back(Storrage(contours, hierarhy));
+    }
+}
+
+void SearchOutlines::drawContours()
+{
+    for(Storrage & data: *infoContours)
+    {
+        cv::Mat drawing;
+        for( int i = 0; i< data.getContours()->size(); i++ )
+        {
+            cv::RNG r;
+            cv::Scalar color = cv::Scalar( r.uniform(0, 255),
+                                           r.uniform(0, 255),
+                                           r.uniform(0, 255));
+
+            cv::drawContours(drawing, *data.getContours(), i, color, 2, 8, *data.getHierarhy(), 0, cv::Point());
+
+            cv::imshow("Contours", drawing);
+        }
+    }
 
 }
 

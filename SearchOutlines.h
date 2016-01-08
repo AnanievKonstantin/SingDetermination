@@ -56,21 +56,29 @@ class SearchOutlines
         /**
          * @brief findContours
          *  Нахлжит контуры и их иерархию в:
-         *  @see grayScaleImages
-         *  @see binaryImages
-         *  @see hsvChannelsFromSource
-         *  @see hsvChannelsFromBright
-         *  @see hsvChannelsFromContrast
+         * @see grayScaleImages
+         * @see binaryImages
+         * @see hsvBinChannelsFromSource
+         * @see hsvBinChannelsFromBright
+         * @see hsvBinChannelsFromContrast
          */
         void findContours();
 
+
+        /**
+         * @brief drawContours
+         *  Рисует контуры найденные на изображениях
+         *  и выводит их на экран
+         */
+        void drawContours();
+
         vector<cv::Mat> * grayScaleImages = nullptr;
         vector<cv::Mat> * binaryImages = nullptr;
-        vector<cv::Mat> * hsvChannelsFromSource = nullptr;
-        vector<cv::Mat> * hsvChannelsFromBright = nullptr;
-        vector<cv::Mat> * hsvChannelsFromContrast = nullptr;
+        vector<cv::Mat> * hsvBinChannelsFromSource = nullptr;
+        vector<cv::Mat> * hsvBinChannelsFromBright = nullptr;
+        vector<cv::Mat> * hsvBinChannelsFromContrast = nullptr;
 
-        list<Storrage> * imagesContours = nullptr;
+        list<Storrage> * infoContours = nullptr;
 };
 
 #endif // SEARCHOUTLINES_H
