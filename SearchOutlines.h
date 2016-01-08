@@ -78,7 +78,7 @@ class SearchOutlines
         vector<cv::Mat> * hsvBinChannelsFromBright = nullptr;
         vector<cv::Mat> * hsvBinChannelsFromContrast = nullptr;
 
-        list<Storrage> * infoContours = nullptr;
+        list<Storrage * > * infoContours = nullptr;
 };
 
 #endif // SEARCHOUTLINES_H
