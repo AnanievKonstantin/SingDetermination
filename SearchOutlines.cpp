@@ -24,11 +24,12 @@ list<Storrage * > *  SearchOutlines::search(const vector<cv::Mat> * correctedPic
     hsvBinChannelsFromContrast = createBinaryHSVChannelsFrom(correctedPictures->at(2));
 
     infoContours = new list<Storrage*>();
-//    findContours(grayScaleImages, 0,0);
+    findContours(grayScaleImages, 0,0);
     findContours(binaryImages, 0,0);
-//    findContours(hsvBinChannelsFromSource,0,0);
-//    findContours(hsvBinChannelsFromBright,0,0);
-//    findContours(hsvBinChannelsFromContrast,0,0);
+    findContours(hsvBinChannelsFromSource,0,0);
+    findContours(hsvBinChannelsFromBright,0,0);
+    findContours(hsvBinChannelsFromContrast,0,0);
+
 //    showPictures("Bright ", hsvBinChannelsFromBright);
 //    showPictures("Contrast ", hsvBinChannelsFromContrast);
 //    showPictures("Source ",hsvBinChannelsFromSource);
@@ -127,6 +128,7 @@ void SearchOutlines::findContours(vector<cv::Mat> *images, int cannyLower, int c
 
         Storrage * outline = new Storrage(contours, hierarhy);
         infoContours->push_back(outline);
+        outline = nullptr;
     }
 }
 
@@ -170,20 +172,24 @@ void SearchOutlines::removeShortContours()
         int i = 0;
         for(const vector<cv::Point> & vec: *stor->getContours())
         {
-            if(vec.size() < 50)
+            if(vec.size() < 200)
             {
                 indexes.push_back(i);
             }
             i++;
         }
 
-        vector<int>::reverse_iterator iter;
-        for(iter = indexes.rend(); iter != indexes.rbegin(); iter--)
-        {
-            (stor->getContours())->erase(stor->getContours()->begin() + *iter);
-            (stor->getHierarhy())->erase(stor->getHierarhy()->begin() + *iter);
-        }
+        stor->getContours()->erase(
+                    std::remove_if(
+                        stor->getContours()->begin(), stor->getContours()->end(),
+                        [](const vector<cv::Point> &vec){ return vec.size() < 200;}),
+                    stor->getContours()->end());
 
+//        vector<int>::iterator iter;
+//        for(iter = indexes.end(); iter != indexes.begin(); iter--)
+//        {
+//            (stor->getHierarhy())->erase(stor->getHierarhy()->begin() + *iter);
+//        }
     }
 }
 

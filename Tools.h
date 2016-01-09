@@ -16,6 +16,7 @@
 #include <vector>
 #include <list>
 #include <cmath>
+#include <algorithm>
 
 /** Для работы с файловой системмой
   */

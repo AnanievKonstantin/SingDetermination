@@ -7,7 +7,7 @@
 
 /**
  * @brief The SearchOutlines class
- *  Производит поиск контуров
+ *  Производит поиск контуров и их нормализацию
  */
 class SearchOutlines
 {

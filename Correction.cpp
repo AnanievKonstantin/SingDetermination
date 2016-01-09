@@ -258,9 +258,9 @@ vector<cv::Mat> * Correction::makeCorrection(std::string path)
     //reg yellow white
     correctionResult->insert(correctionResult->end(), colors.begin(),colors.end());
 
-    cv::waitKey(0);
+    //cv::waitKey(0);
 
-    cv::destroyAllWindows();
+    //cv::destroyAllWindows();
 
     return correctionResult;
 }
