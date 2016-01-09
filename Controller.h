@@ -4,6 +4,7 @@
 #include <Tools.h>
 #include <Correction.h>
 #include <SearchOutlines.h>
+#include <ContourAnalis.h>
 
 class Controller
 {

@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     Correction.cpp \
     Controller.cpp \
     SearchOutlines.cpp \
-    Storrage.cpp
+    Storrage.cpp \
+    ContourAnalis.cpp
 
 LIBS += -L /usr/local/lib/libopencv_cudev.so.3.1.0
 LIBS += -L /usr/local/lib/libopencv_core.so.3.1.0
@@ -74,5 +75,6 @@ HEADERS += \
     Tools.h \
     Controller.h \
     SearchOutlines.h \
-    Storrage.h
+    Storrage.h \
+    ContourAnalis.h
 

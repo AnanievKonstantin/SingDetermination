@@ -227,6 +227,8 @@ vector<cv::Mat> * Correction::makeCorrection(std::string path)
 
     cv::xphoto::autowbGrayworld(this->sourceImage, this->sourceImage);
 
+//    cv::blur(sourceImage, sourceImage,cv::Size(5,5));
+
     increaseClarity(sourceImage);
 
     correctionResult->push_back(sourceImage.clone()); //source

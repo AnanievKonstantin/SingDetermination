@@ -9,29 +9,36 @@ SearchOutlines::~SearchOutlines()
 {
 }
 
-void SearchOutlines::search(const vector<cv::Mat> * correctedPictures)
+list<Storrage * > *  SearchOutlines::search(const vector<cv::Mat> * correctedPictures)
 {
+
+    //showPictures("Origin", correctedPictures);
     grayScaleImages = createGrayScale(correctedPictures);
 
     binaryImages = createBin();
-
-    //showPictures("Bin ", binaryImages);
+//    showPictures("Bin", binaryImages);
+//    showPictures("Bin ", binaryImages);
 
     hsvBinChannelsFromSource = createBinaryHSVChannelsFrom(correctedPictures->at(0));
     hsvBinChannelsFromBright = createBinaryHSVChannelsFrom(correctedPictures->at(1));
     hsvBinChannelsFromContrast = createBinaryHSVChannelsFrom(correctedPictures->at(2));
 
-    findContours();
+    infoContours = new list<Storrage*>();
+//    findContours(grayScaleImages, 0,0);
+    findContours(binaryImages, 0,0);
+//    findContours(hsvBinChannelsFromSource,0,0);
+//    findContours(hsvBinChannelsFromBright,0,0);
+//    findContours(hsvBinChannelsFromContrast,0,0);
+//    showPictures("Bright ", hsvBinChannelsFromBright);
+//    showPictures("Contrast ", hsvBinChannelsFromContrast);
+//    showPictures("Source ",hsvBinChannelsFromSource);
 
-    //showPictures("Bright ", hsvBinChannelsFromBright);
-    //showPictures("Contrast ", hsvBinChannelsFromContrast);
-    //showPictures("Source ",hsvBinChannelsFromSource);
+    //drawContours();
 
-    drawContours();
+//    cv::waitKey(0);
+//    cv::destroyAllWindows();
 
-    cv::waitKey(0);
-
-    cv::destroyAllWindows();
+    makeNormalisation();
 
     delete this->grayScaleImages;
     delete this->binaryImages;
@@ -39,13 +46,7 @@ void SearchOutlines::search(const vector<cv::Mat> * correctedPictures)
     delete this->hsvBinChannelsFromContrast;
     delete this->hsvBinChannelsFromSource;
 
-    for(Storrage * iteam: *infoContours)
-    {
-        delete iteam;
-        iteam = nullptr;
-    }
-
-    delete infoContours;
+    return infoContours;
 }
 
 void SearchOutlines::showPictures(string name,const vector<cv::Mat> * const pictures)
@@ -110,57 +111,19 @@ vector<cv::Mat> *SearchOutlines::createBinaryHSVChannelsFrom(const cv::Mat &imag
     return chanels;
 }
 
-void SearchOutlines::findContours()
+void SearchOutlines::findContours(vector<cv::Mat> *images, int cannyLower, int cannyUpper)
 {
     vector<vector<cv::Point>> * contours = nullptr;
     vector<cv::Vec4i> * hierarhy = nullptr;
-    infoContours = new list<Storrage*>();
     cv::Mat cannyOut;
 
-    for(cv::Mat & image: *binaryImages)
+    for(cv::Mat & image: *images)
     {
-        //ERROR --> нужно настроить поиск контуров
-        cv::Canny(image, cannyOut, 200, 255);
+        cv::Canny(image, cannyOut, cannyLower, cannyUpper,5);
         contours = new vector<vector<cv::Point>>();
         hierarhy = new vector<cv::Vec4i>();
         cv::findContours(cannyOut, *contours, *hierarhy,
-                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
-
-        Storrage * outline = new Storrage(contours, hierarhy);
-        infoContours->push_back(outline);
-    }
-
-    for(cv::Mat & image: *hsvBinChannelsFromSource)
-    {
-        cv::Canny(image, cannyOut, 0, 254);
-        contours = new vector<vector<cv::Point>>();
-        hierarhy = new vector<cv::Vec4i>();
-        cv::findContours(cannyOut, *contours, *hierarhy,
-                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
-
-        Storrage * outline = new Storrage(contours, hierarhy);
-        infoContours->push_back(outline);
-    }
-
-    for(cv::Mat & image: *hsvBinChannelsFromContrast)
-    {
-        cv::Canny(image, cannyOut, 0, 254);
-        contours = new vector<vector<cv::Point>>();
-        hierarhy = new vector<cv::Vec4i>();
-        cv::findContours(cannyOut, *contours, *hierarhy,
-                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
-
-        Storrage * outline = new Storrage(contours, hierarhy);
-        infoContours->push_back(outline);
-    }
-
-    for(cv::Mat & image: *hsvBinChannelsFromBright)
-    {
-        cv::Canny(image, cannyOut, 0, 254);
-        contours = new vector<vector<cv::Point>>();
-        hierarhy = new vector<cv::Vec4i>();
-        cv::findContours(cannyOut, *contours, *hierarhy,
-                         CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
+                         CV_RETR_TREE, CV_CHAIN_APPROX_NONE, cv::Point(0, 0));
 
         Storrage * outline = new Storrage(contours, hierarhy);
         infoContours->push_back(outline);
@@ -188,8 +151,39 @@ void SearchOutlines::drawContours()
         }
 
         cv::imshow("Contours: " + std::to_string(count), drawing);
-        cv::waitKey(0);
+        //cv::waitKey(0);
         count++;
+    }
+}
+
+void SearchOutlines::makeNormalisation()
+{
+    removeShortContours();
+}
+
+void SearchOutlines::removeShortContours()
+{
+
+    for(Storrage * stor: *infoContours)
+    {
+        vector<int> indexes;
+        int i = 0;
+        for(const vector<cv::Point> & vec: *stor->getContours())
+        {
+            if(vec.size() < 50)
+            {
+                indexes.push_back(i);
+            }
+            i++;
+        }
+
+        vector<int>::reverse_iterator iter;
+        for(iter = indexes.rend(); iter != indexes.rbegin(); iter--)
+        {
+            (stor->getContours())->erase(stor->getContours()->begin() + *iter);
+            (stor->getHierarhy())->erase(stor->getHierarhy()->begin() + *iter);
+        }
+
     }
 }
 

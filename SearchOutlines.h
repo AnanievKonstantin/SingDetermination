@@ -7,14 +7,24 @@
 
 /**
  * @brief The SearchOutlines class
- *  Производит поиск и нормализацию контуров
+ *  Производит поиск контуров
  */
 class SearchOutlines
 {
     public:
         SearchOutlines();
         ~SearchOutlines();
-        void search(const vector<cv::Mat> * correctedPictures);
+
+        /**
+         * @brief search
+         *  Производит поиск контуров по:
+         *  Серым, бинарным и HSV версиям correctedPictures
+         * @param correctedPictures
+         *  нормализованные изображения
+         * @return
+         *  Все контуры изображения
+         */
+        list<Storrage * > * search(const vector<cv::Mat> * correctedPictures);
 
     private:
 
@@ -62,7 +72,7 @@ class SearchOutlines
          * @see hsvBinChannelsFromBright
          * @see hsvBinChannelsFromContrast
          */
-        void findContours();
+        void findContours(vector<cv::Mat> * images, int cannyLower, int cannyUpper);
 
 
         /**
@@ -71,6 +81,18 @@ class SearchOutlines
          *  и выводит их на экран
          */
         void drawContours();
+
+        /**
+         * @brief makeNormalisation
+         *  Редактирует список контуров
+         */
+        void makeNormalisation();
+
+        /**
+         * @brief removeShortContours
+         *  Удаляет короткие контуры
+         */
+        void removeShortContours();
 
         vector<cv::Mat> * grayScaleImages = nullptr;
         vector<cv::Mat> * binaryImages = nullptr;

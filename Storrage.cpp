@@ -20,12 +20,12 @@ Storrage::~Storrage()
     delete hierarchyOfContours;
 }
 
-const vector<vector<cv::Point> > *Storrage::getContours() const
+vector<vector<cv::Point> > *Storrage::getContours() const
 {
     return contours;
 }
 
-const vector<cv::Vec4i> *Storrage::getHierarhy() const
+vector<cv::Vec4i> *Storrage::getHierarhy() const
 {
     return hierarchyOfContours;
 }

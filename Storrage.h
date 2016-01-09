@@ -13,8 +13,8 @@ public:
     Storrage(vector<vector<cv::Point>> * contours, vector<cv::Vec4i> * hierarhy);
     ~Storrage();
 
-    const vector<vector<cv::Point>> * getContours() const;
-    const vector<cv::Vec4i> * getHierarhy() const;
+    vector<vector<cv::Point>> * getContours() const;
+    vector<cv::Vec4i> * getHierarhy() const;
 
 private:
     vector<vector<cv::Point>> * contours = nullptr;
