@@ -18,7 +18,9 @@ private:
      *  контуры для отрисовки
      * @debug
      */
-    void drawContour(const vector<cv::Point> &contour);
+    cv::Mat drawContour(const vector<cv::Point> &contour);
+
+    bool circleDetected(cv::Mat & imageWithContour, vector<cv::Point> &contour);
 
 public:
     ContourAnalis();
