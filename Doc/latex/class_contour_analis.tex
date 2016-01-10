@@ -27,7 +27,7 @@ bool \hyperlink{class_contour_analis_a2e67419653bf28f2bbf6766e2ffa1089}{circle\+
 bool \hyperlink{class_contour_analis_a1970e01e1762c299753c0d57f0879915}{romb\+Detection} (cv\+::\+Mat \&image\+With\+Contour, vector$<$ cv\+::\+Point $>$ \&contour)
 \begin{DoxyCompactList}\small\item\em romb\+Detection определяет является ли контур или ромбом или квадратом или прямоугольником \end{DoxyCompactList}\item 
 bool \hyperlink{class_contour_analis_a5c8b79c28a07825f5413cd98640d8dd2}{triagle\+Detection} (cv\+::\+Mat \&image\+With\+Contour, vector$<$ cv\+::\+Point $>$ \&contour)
-\begin{DoxyCompactList}\small\item\em triagle\+Detection Определяет является ли полученный контур триугольником \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em triagle\+Detection Определяет является ли полученный контур треугольником \end{DoxyCompactList}\item 
 double \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance} (cv\+::\+Point a, cv\+::\+Point b)
 \begin{DoxyCompactList}\small\item\em distance Определяет расстояние между двумя точками \end{DoxyCompactList}\item 
 void \hyperlink{class_contour_analis_a1a8b2ccb473a901f51cc21339c16c3ea}{Calc\+Probability\+Detection} (double to\+Rect, double to\+Circle, double to\+Triagle)
@@ -51,12 +51,12 @@ The \hyperlink{class_contour_analis}{Contour\+Analis} class Производит
 )}}\label{class_contour_analis_afb230c8f15afd848b467916f16c1681a}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 320
+См. определение в файле Contour\+Analis.\+cpp строка 318
 
 
 \begin{DoxyCode}
-321 \{
-322 \}
+319 \{
+320 \}
 \end{DoxyCode}
 
 
@@ -80,50 +80,50 @@ Calc\+Probability\+Detection Производит расчет вероянос�
 \hline
 {\em to\+Circle} & Число обнаружений контура круг \\
 \hline
-{\em to\+Triagle} & Число обнаружений контура триугольник \\
+{\em to\+Triagle} & Число обнаружений контура треугольник \\
 \hline
 \end{DoxyParams}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 283
+См. определение в файле Contour\+Analis.\+cpp строка 281
 
 
 \begin{DoxyCode}
-284 \{
-285     \textcolor{keywordtype}{double} all = (toRect + toCircle + toTriagle);
-286     \textcolor{keywordflow}{if}(all == 0)
-287     \{
-288         cout << \textcolor{stringliteral}{" N "} <<endl;
-289         \textcolor{keywordflow}{return};
-290     \}
-291 
-292     \textcolor{keywordtype}{double} isRect = toRect/all;
-293     \textcolor{keywordtype}{double} isCircle = toCircle/all;
-294     \textcolor{keywordtype}{double} isTriagle = toTriagle/all;
-295 
-296     \textcolor{keywordflow}{if}(isCircle > isRect && isCircle > isTriagle)
-297     \{
-298         cout << \textcolor{stringliteral}{" O "} << isCircle <<endl;
-299         \textcolor{keywordflow}{return};
-300     \}
-301 
-302     \textcolor{keywordflow}{if}(isRect > isTriagle && isRect > isCircle)
-303     \{
-304         cout << \textcolor{stringliteral}{" R "} << isRect <<endl;
-305         \textcolor{keywordflow}{return};
-306     \}
-307 
-308     \textcolor{keywordflow}{if}(isTriagle > isRect && isTriagle > isCircle)
-309     \{
-310         cout << \textcolor{stringliteral}{" D "} << isTriagle<<endl;
-311         \textcolor{keywordflow}{return};
-312     \}
-313 
-314     cout << \textcolor{stringliteral}{" N "} <<endl;
-315     \textcolor{keywordflow}{return};
-316 
-317 
-318 \}
+282 \{
+283     \textcolor{keywordtype}{double} all = (toRect + toCircle + toTriagle);
+284     \textcolor{keywordflow}{if}(all == 0)
+285     \{
+286         cout << \textcolor{stringliteral}{" N "} <<endl;
+287         \textcolor{keywordflow}{return};
+288     \}
+289 
+290     \textcolor{keywordtype}{double} isRect = toRect/all;
+291     \textcolor{keywordtype}{double} isCircle = toCircle/all;
+292     \textcolor{keywordtype}{double} isTriagle = toTriagle/all;
+293 
+294     \textcolor{keywordflow}{if}(isCircle > isRect && isCircle > isTriagle)
+295     \{
+296         cout << \textcolor{stringliteral}{" O "} << isCircle <<endl;
+297         \textcolor{keywordflow}{return};
+298     \}
+299 
+300     \textcolor{keywordflow}{if}(isRect > isTriagle && isRect > isCircle)
+301     \{
+302         cout << \textcolor{stringliteral}{" R "} << isRect <<endl;
+303         \textcolor{keywordflow}{return};
+304     \}
+305 
+306     \textcolor{keywordflow}{if}(isTriagle > isRect && isTriagle > isCircle)
+307     \{
+308         cout << \textcolor{stringliteral}{" D "} << isTriagle<<endl;
+309         \textcolor{keywordflow}{return};
+310     \}
+311 
+312     cout << \textcolor{stringliteral}{" N "} <<endl;
+313     \textcolor{keywordflow}{return};
+314 
+315 
+316 \}
 \end{DoxyCode}
 \hypertarget{class_contour_analis_a2e67419653bf28f2bbf6766e2ffa1089}{\index{Contour\+Analis@{Contour\+Analis}!circle\+Detected@{circle\+Detected}}
 \index{circle\+Detected@{circle\+Detected}!Contour\+Analis@{Contour\+Analis}}
@@ -200,17 +200,17 @@ distance Определяет расстояние между двумя точ�
 \end{DoxyReturn}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 274
+См. определение в файле Contour\+Analis.\+cpp строка 272
 
 
 \begin{DoxyCode}
-275 \{
-276     \textcolor{keywordtype}{double} d = 0;
-277     \textcolor{keywordtype}{double} arg1 = std::pow((b.x - a.x), 2);
-278     \textcolor{keywordtype}{double} arg2 = std::pow((b.y - a.y), 2);
-279     d = std::sqrt(std::fabs(arg1)+std::fabs(arg2));
-280     \textcolor{keywordflow}{return} d;
-281 \}
+273 \{
+274     \textcolor{keywordtype}{double} d = 0;
+275     \textcolor{keywordtype}{double} arg1 = std::pow((b.x - a.x), 2);
+276     \textcolor{keywordtype}{double} arg2 = std::pow((b.y - a.y), 2);
+277     d = std::sqrt(std::fabs(arg1)+std::fabs(arg2));
+278     \textcolor{keywordflow}{return} d;
+279 \}
 \end{DoxyCode}
 \hypertarget{class_contour_analis_a8dfbcc0a15123202d1af035f7206d87c}{\index{Contour\+Analis@{Contour\+Analis}!draw\+Contour@{draw\+Contour}}
 \index{draw\+Contour@{draw\+Contour}!Contour\+Analis@{Contour\+Analis}}
@@ -274,61 +274,61 @@ make\+Analis Производит анализ контуров и выводи�
 \end{DoxyParams}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 324
+См. определение в файле Contour\+Analis.\+cpp строка 322
 
 
 \begin{DoxyCode}
-325 \{
-326     \textcolor{comment}{//cout << "In ANALIS" <<endl;}
-327     \textcolor{keywordtype}{int} i = 0;
-328     \textcolor{keywordtype}{int} imageNumber = 0;
-329 
-330     \textcolor{keywordtype}{double} isRomb = 0;
-331     \textcolor{keywordtype}{double} isCircle = 0;
-332     \textcolor{keywordtype}{double} isTriagle = 0;
-333 
-334     \textcolor{keywordflow}{for}(\hyperlink{class_storrage}{Storrage} * stor: *contours)
-335     \{
-336 \textcolor{comment}{//        cout<< "\(\backslash\)t " << imageNumber <<") Изображение: " << endl;}
-337         imageNumber++;
-338         \textcolor{keywordflow}{for}(vector<cv::Point> & vec: *stor->getContours())
-339         \{
-340 \textcolor{comment}{//            cout<<"\(\backslash\)t\(\backslash\)t "<< i <<") Информация о контуре: " << endl;}
-341             cv::Mat contourImage = \hyperlink{class_contour_analis_a8dfbcc0a15123202d1af035f7206d87c}{drawContour}(vec);
-342             \textcolor{keywordflow}{if}(\hyperlink{class_contour_analis_a2e67419653bf28f2bbf6766e2ffa1089}{circleDetected}(contourImage, vec))
-343             \{
-344 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tКруг" << endl;}
-345                 isCircle ++;
-346             \}\textcolor{keywordflow}{else}
-347 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tНЕ Круг" << endl;}
-348 
-349             \textcolor{keywordflow}{if}(\hyperlink{class_contour_analis_a1970e01e1762c299753c0d57f0879915}{rombDetection}(contourImage, vec))
-350             \{
-351 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tРомб" << endl;}
-352                 isRomb ++;
-353             \}\textcolor{keywordflow}{else}
-354 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tНЕ Ромб" << endl;}
-355 
-356             \textcolor{keywordflow}{if}(\hyperlink{class_contour_analis_a5c8b79c28a07825f5413cd98640d8dd2}{triagleDetection}(contourImage, vec))
-357             \{
-358 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tТриугольник" << endl;}
-359                 isTriagle ++;
-360             \}\textcolor{keywordflow}{else}
-361 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tНE триугольник" << endl;}
-362 
-363             i++;
-364         \}
-365         i = 0;
-366     \}
-367 
-368 \textcolor{comment}{//    cout << "Это круг на: "<<isCircle<<endl;}
-369 \textcolor{comment}{//    cout << "Это ромб на: "<<isRomb<<endl;}
-370 \textcolor{comment}{//    cout << "Это триугольник на: "<<isTriagle<<endl;}
-371 
-372     \hyperlink{class_contour_analis_a1a8b2ccb473a901f51cc21339c16c3ea}{CalcProbabilityDetection}(isRomb, isCircle, isTriagle);
-373     \textcolor{comment}{//cv::waitKey();}
-374     \textcolor{comment}{//cv::destroyAllWindows();}
-375 \}
+323 \{
+324     \textcolor{comment}{//cout << "In ANALIS" <<endl;}
+325     \textcolor{keywordtype}{int} i = 0;
+326     \textcolor{keywordtype}{int} imageNumber = 0;
+327 
+328     \textcolor{keywordtype}{double} isRomb = 0;
+329     \textcolor{keywordtype}{double} isCircle = 0;
+330     \textcolor{keywordtype}{double} isTriagle = 0;
+331 
+332     \textcolor{keywordflow}{for}(\hyperlink{class_storrage}{Storrage} * stor: *contours)
+333     \{
+334 \textcolor{comment}{//        cout<< "\(\backslash\)t " << imageNumber <<") Изображение: " << endl;}
+335         imageNumber++;
+336         \textcolor{keywordflow}{for}(vector<cv::Point> & vec: *stor->getContours())
+337         \{
+338 \textcolor{comment}{//            cout<<"\(\backslash\)t\(\backslash\)t "<< i <<") Информация о контуре: " << endl;}
+339             cv::Mat contourImage = \hyperlink{class_contour_analis_a8dfbcc0a15123202d1af035f7206d87c}{drawContour}(vec);
+340             \textcolor{keywordflow}{if}(\hyperlink{class_contour_analis_a2e67419653bf28f2bbf6766e2ffa1089}{circleDetected}(contourImage, vec))
+341             \{
+342 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tКруг" << endl;}
+343                 isCircle ++;
+344             \}\textcolor{keywordflow}{else}
+345 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tНЕ Круг" << endl;}
+346 
+347             \textcolor{keywordflow}{if}(\hyperlink{class_contour_analis_a1970e01e1762c299753c0d57f0879915}{rombDetection}(contourImage, vec))
+348             \{
+349 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tРомб" << endl;}
+350                 isRomb ++;
+351             \}\textcolor{keywordflow}{else}
+352 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tНЕ Ромб" << endl;}
+353 
+354             \textcolor{keywordflow}{if}(\hyperlink{class_contour_analis_a5c8b79c28a07825f5413cd98640d8dd2}{triagleDetection}(contourImage, vec))
+355             \{
+356 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tтреугольник" << endl;}
+357                 isTriagle ++;
+358             \}\textcolor{keywordflow}{else}
+359 \textcolor{comment}{//                cout << "\(\backslash\)t\(\backslash\)tНE треугольник" << endl;}
+360 
+361             i++;
+362         \}
+363         i = 0;
+364     \}
+365 
+366 \textcolor{comment}{//    cout << "Это круг на: "<<isCircle<<endl;}
+367 \textcolor{comment}{//    cout << "Это ромб на: "<<isRomb<<endl;}
+368 \textcolor{comment}{//    cout << "Это треугольник на: "<<isTriagle<<endl;}
+369 
+370     \hyperlink{class_contour_analis_a1a8b2ccb473a901f51cc21339c16c3ea}{CalcProbabilityDetection}(isRomb, isCircle, isTriagle);
+371     \textcolor{comment}{//cv::waitKey();}
+372     \textcolor{comment}{//cv::destroyAllWindows();}
+373 \}
 \end{DoxyCode}
 \hypertarget{class_contour_analis_a1970e01e1762c299753c0d57f0879915}{\index{Contour\+Analis@{Contour\+Analis}!romb\+Detection@{romb\+Detection}}
 \index{romb\+Detection@{romb\+Detection}!Contour\+Analis@{Contour\+Analis}}
@@ -368,7 +368,7 @@ true если контур распознан как ромб
 \end{DoxyVerb}
 
 
-Определяются точки A,B,C,D Расчитываются отрезки A\+B, A\+D, B\+C,C\+D
+Определяются точки A,B,C,D Если точки слишком близк то распознаётся как не ромб Расчитываются отрезки A\+B, A\+D, B\+C,C\+D
 
 Вычисляется площадь A\+B\+C\+D cv\+::contour\+Area(contour) Вычисляется площадь по S = 1/2 $\ast$ (A\+C$\ast$\+B\+D) Вычисляется delta = cv\+::contour\+Area(contour)/ S Если delta не ревышает заданного значения то распознаётся как ромб
 
@@ -377,80 +377,79 @@ true если контур распознан как ромб
 
 \begin{DoxyCode}
 55 \{
-81     cv::Point D(0,0);
-82     cv::Point C(0,0);
-83     cv::Point B(imageWithContour.cols,imageWithContour.rows);
-84     cv::Point A(imageWithContour.cols,imageWithContour.rows);
-85 
-86     \textcolor{keywordflow}{for}(cv::Point & point: contour)
-87     \{
-88         \textcolor{keywordflow}{if}(point.x > D.x)
-89         \{
-90             D.x = point.x; D.y = point.y;
-91         \}
-92 
-93         \textcolor{keywordflow}{if}(point.x < B.x)
-94         \{
-95             B.x = point.x; B.y = point.y;
-96         \}
-97 
-98         \textcolor{keywordflow}{if}(point.y > C.y)
-99         \{
-100             C.x = point.x; C.y = point.y;
-101         \}
-102 
-103         \textcolor{keywordflow}{if}(point.y < A.y)
-104         \{
-105             A.x = point.x; A.y = point.y;
-106         \}
-107     \}
-108 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tD element : " << D<< "\(\backslash\)n";}
-109 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tA element : " << A<< "\(\backslash\)n";}
-110 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tB element : " << B<< "\(\backslash\)n";}
-111 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tC element : " << C<< "\(\backslash\)n";}
-112 
-113     \textcolor{keywordtype}{double} areaOfContour = cv::contourArea(contour);
-114 \textcolor{comment}{//    cout<<"\(\backslash\)t\(\backslash\)tareaOfContour" << areaOfContour <<endl;}
-115 
-116     \textcolor{keywordtype}{double} AB = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(A, B);
-117     \textcolor{keywordtype}{double} BC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(C, B);
-118     \textcolor{keywordtype}{double} AD = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(D, A);
-119     \textcolor{keywordtype}{double} CD = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(D, C);
-120 
-121 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAB " << AB <<endl;}
-122 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tBC " << BC <<endl;}
-123 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAD " << AD <<endl;}
-124 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tCD " << CD<<endl;}
-125 
-126     \textcolor{keywordflow}{if}(AB <= 1 || BC <= 1 || CD <= 1 || AD <= 1)
-127     \{
-128         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-129     \}
-130 
-131     \textcolor{keywordtype}{double} AC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(C, A);
-132     \textcolor{keywordtype}{double} BD = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B, D);
-133 
-134 \textcolor{comment}{//    cout <<"AC " << AC <<endl;}
-135 \textcolor{comment}{//    cout <<"BD " << BD <<endl;}
-136 
-137     \textcolor{keywordflow}{if}(A.y >= (B.y - AC/8) || A.y >= (C.y - AC/8))
-138     \{
-139         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-140     \}
-141 
-142     \textcolor{keywordtype}{double} areaOfPoints = (0.5) * (AC*BD);
-143 
-144 \textcolor{comment}{//    cout << "areaOfContour "<< areaOfContour <<endl;}
-145 \textcolor{comment}{//    cout << "areaOfPoints " << areaOfPoints<<endl;}
-146 
-147     \textcolor{keywordtype}{double} delta = std::fabs(areaOfContour/areaOfPoints);
-148 \textcolor{comment}{//    cout << "delta " << delta <<endl;}
-149 
-150     \textcolor{keywordflow}{if}(delta < 1.0 || delta > 1.2)
-151     \{
-152         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-153     \}
-154 
+82     cv::Point D(0,0);
+83     cv::Point C(0,0);
+84     cv::Point B(imageWithContour.cols,imageWithContour.rows);
+85     cv::Point A(imageWithContour.cols,imageWithContour.rows);
+86 
+87     \textcolor{keywordflow}{for}(cv::Point & point: contour)
+88     \{
+89         \textcolor{keywordflow}{if}(point.x > D.x)
+90         \{
+91             D.x = point.x; D.y = point.y;
+92         \}
+93 
+94         \textcolor{keywordflow}{if}(point.x < B.x)
+95         \{
+96             B.x = point.x; B.y = point.y;
+97         \}
+98 
+99         \textcolor{keywordflow}{if}(point.y > C.y)
+100         \{
+101             C.x = point.x; C.y = point.y;
+102         \}
+103 
+104         \textcolor{keywordflow}{if}(point.y < A.y)
+105         \{
+106             A.x = point.x; A.y = point.y;
+107         \}
+108     \}
+109 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tD element : " << D<< "\(\backslash\)n";}
+110 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tA element : " << A<< "\(\backslash\)n";}
+111 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tB element : " << B<< "\(\backslash\)n";}
+112 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tC element : " << C<< "\(\backslash\)n";}
+113 
+114     \textcolor{keywordtype}{double} areaOfContour = cv::contourArea(contour);
+115 \textcolor{comment}{//    cout<<"\(\backslash\)t\(\backslash\)tareaOfContour" << areaOfContour <<endl;}
+116 
+117     \textcolor{keywordtype}{double} AB = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(A, B);
+118     \textcolor{keywordtype}{double} BC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(C, B);
+119     \textcolor{keywordtype}{double} AD = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(D, A);
+120     \textcolor{keywordtype}{double} CD = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(D, C);
+121 
+122 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAB " << AB <<endl;}
+123 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tBC " << BC <<endl;}
+124 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAD " << AD <<endl;}
+125 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tCD " << CD<<endl;}
+126 
+127     \textcolor{keywordflow}{if}(AB <= 1 || BC <= 1 || CD <= 1 || AD <= 1)
+128     \{
+129         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+130     \}
+131 
+132     \textcolor{keywordtype}{double} AC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(C, A);
+133     \textcolor{keywordtype}{double} BD = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B, D);
+134 
+135 \textcolor{comment}{//    cout <<"AC " << AC <<endl;}
+136 \textcolor{comment}{//    cout <<"BD " << BD <<endl;}
+137 
+138     \textcolor{keywordflow}{if}(A.y >= (B.y - AC/8) || A.y >= (C.y - AC/8))
+139     \{
+140         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+141     \}
+142 
+143     \textcolor{keywordtype}{double} areaOfPoints = (0.5) * (AC*BD);
+144 
+145 \textcolor{comment}{//    cout << "areaOfContour "<< areaOfContour <<endl;}
+146 \textcolor{comment}{//    cout << "areaOfPoints " << areaOfPoints<<endl;}
+147 
+148     \textcolor{keywordtype}{double} delta = std::fabs(areaOfContour/areaOfPoints);
+149 \textcolor{comment}{//    cout << "delta " << delta <<endl;}
+150 
+151     \textcolor{keywordflow}{if}(delta < 1.0 || delta > 1.2)
+152     \{
+153         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+154     \}
 155 
 156     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
 157 \}
@@ -465,7 +464,7 @@ true если контур распознан как ромб
 )\hspace{0.3cm}{\ttfamily [private]}}}\label{class_contour_analis_a5c8b79c28a07825f5413cd98640d8dd2}
 
 
-triagle\+Detection Определяет является ли полученный контур триугольником 
+triagle\+Detection Определяет является ли полученный контур треугольником 
 
 
 \begin{DoxyParams}{Аргументы}
@@ -475,7 +474,7 @@ triagle\+Detection Определяет является ли полученны
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-true если контур распознан как триугольник 
+true если контур распознан как треугольник 
 \end{DoxyReturn}
 \begin{DoxyVerb}    A      H       B
      o*****o******o
@@ -490,106 +489,103 @@ true если контур распознан как триугольник
 \end{DoxyVerb}
 
 
-триугольник A\+B\+C с высотой С\+H
-
-При распознании сравнивается параметр площади найденный по формуле 1/2 $\ast$ A\+B $\ast$ C\+H и площадь найденная по функции cv\+::contour\+Area()
-
-Если расстояние между всеми сторонами одинаковое и если H.\+y не выше (A.\+x + B.\+x)/2 белее чем на A\+B/4 то распознаётся как триугольник
+треугольник A\+B\+C с высотой С\+H Если расстояние между всеми сторонами одинаковое и если H.\+y не выше (A.\+x + B.\+x)/2 белее чем на A\+B/4 то распознаётся как треугольник Если высоты нет то распознаётся как не треугольник
 
 См. определение в файле Contour\+Analis.\+cpp строка 159
 
 
 \begin{DoxyCode}
 160 \{
-184     cv::Point A(imageWithContour.cols,imageWithContour.rows);
-185     cv::Point B(0,0);
-186     cv::Point H(0,0);
-187     cv::Point C(0,0);
-188 
-189     \textcolor{keywordflow}{for}(cv::Point & point: contour)
-190     \{
-191         \textcolor{keywordflow}{if}(point.x > B.x)
-192         \{
-193             B.x = point.x; B.y = point.y;
-194         \}
-195 
-196         \textcolor{keywordflow}{if}(point.y > C.y)
-197         \{
-198             C.x = point.x; C.y = point.y;
-199         \}
-200 
-201         \textcolor{keywordflow}{if}(point.x < A.x)
-202         \{
-203             A.x = point.x; A.y = point.y;
-204         \}
-205     \}
-206 
-207     \textcolor{keywordtype}{int} AB = (int)\hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B, A);
-208 
-209     \textcolor{keywordflow}{for}(cv::Point & point: contour)
-210     \{
-211         \textcolor{keywordflow}{if}(point.x >= (A.x + AB/2) - 5 && point.x <= (B.x - AB/2) + 5)
-212         \{
-213             \textcolor{keywordtype}{double} dyAB = (A.y + B.y)/2;
-214             \textcolor{keywordflow}{if}(point.y <= (A.y + dyAB) && point.y >= (A.y - dyAB))
-215             \{
-216                 \textcolor{keywordflow}{if}(point.y <= (B.y + dyAB) && point.y >= (B.y - dyAB))
-217                 \{
-218                    H.x = point.x; H.y = point.y;
-219                 \}
-220             \}
-221 
-222         \}
-223     \}
-224 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tA: " << A<< "\(\backslash\)n";}
-225 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tB: " << B<< "\(\backslash\)n";}
-226 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tC : " << C<< "\(\backslash\)n";}
-227 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tH: " << H<< "\(\backslash\)n";}
-228 
-229     \textcolor{keywordflow}{if}(H.x == 0 && H.y == 0)
-230     \{
-231         \textcolor{keywordflow}{return} 0;
-232     \}
-233 
-234     AB = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B,A);
-235     \textcolor{keywordtype}{double} AC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(A, C);
-236     \textcolor{keywordtype}{double} BC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B, C);
-237 
-238 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAB: " << AB<< "\(\backslash\)n";}
-239 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAC: " << AC<< "\(\backslash\)n";}
-240 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tBC : " <<BC<< "\(\backslash\)n";}
-241 
-242     \textcolor{keywordflow}{if}(AB+AC <= BC || AB+BC <= AC || AC+BC <= AB)
-243     \{
-244         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-245     \}
-246 
-247     \textcolor{keywordtype}{double} relAB\_AC = AB/AC;
-248     \textcolor{keywordtype}{double} relAB\_BC = AB/BC;
-249     \textcolor{keywordtype}{double} relAC\_BC = AC/BC;
-250 
-251     \textcolor{keywordflow}{if}(relAB\_AC < 0.95 || relAB\_AC >1.05)
-252     \{
-253         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-254     \}
-255 
-256     \textcolor{keywordflow}{if}(relAB\_BC < 0.95 || relAB\_BC >1.05)
-257     \{
-258         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-259     \}
-260 
-261     \textcolor{keywordflow}{if}(relAC\_BC < 0.95 ||  relAC\_BC >1.05)
-262     \{
-263         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-264     \}
-265 
-266 \textcolor{comment}{//    cout << "AB/AC" << AB/AC <<endl;}
-267 \textcolor{comment}{//    cout << "AB/BC" << AB/BC <<endl;}
-268 \textcolor{comment}{//    cout << "AC/BC" << AC/BC <<endl;}
+181     cv::Point A(imageWithContour.cols,imageWithContour.rows);
+182     cv::Point B(0,0);
+183     cv::Point H(0,0);
+184     cv::Point C(0,0);
+185 
+186     \textcolor{keywordflow}{for}(cv::Point & point: contour)
+187     \{
+188         \textcolor{keywordflow}{if}(point.x > B.x)
+189         \{
+190             B.x = point.x; B.y = point.y;
+191         \}
+192 
+193         \textcolor{keywordflow}{if}(point.y > C.y)
+194         \{
+195             C.x = point.x; C.y = point.y;
+196         \}
+197 
+198         \textcolor{keywordflow}{if}(point.x < A.x)
+199         \{
+200             A.x = point.x; A.y = point.y;
+201         \}
+202     \}
+203 
+204     \textcolor{keywordtype}{int} AB = (int)\hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B, A);
+205 
+206     \textcolor{keywordflow}{for}(cv::Point & point: contour)
+207     \{
+208         \textcolor{keywordflow}{if}(point.x >= (A.x + AB/2) - 5 && point.x <= (B.x - AB/2) + 5)
+209         \{
+210             \textcolor{keywordtype}{double} dyAB = (A.y + B.y)/2;
+211             \textcolor{keywordflow}{if}(point.y <= (A.y + dyAB) && point.y >= (A.y - dyAB))
+212             \{
+213                 \textcolor{keywordflow}{if}(point.y <= (B.y + dyAB) && point.y >= (B.y - dyAB))
+214                 \{
+215                    H.x = point.x; H.y = point.y;
+216                 \}
+217             \}
+218 
+219         \}
+220     \}
+221 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tA: " << A<< "\(\backslash\)n";}
+222 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tB: " << B<< "\(\backslash\)n";}
+223 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tC : " << C<< "\(\backslash\)n";}
+224 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tH: " << H<< "\(\backslash\)n";}
+225 
+226     \textcolor{keywordflow}{if}(H.x == 0 && H.y == 0)
+227     \{
+228         \textcolor{keywordflow}{return} 0;
+229     \}
+230 
+231     AB = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B,A);
+232     \textcolor{keywordtype}{double} AC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(A, C);
+233     \textcolor{keywordtype}{double} BC = \hyperlink{class_contour_analis_a4f99f88069c6a746805275d21acdf5b2}{distance}(B, C);
+234 
+235 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAB: " << AB<< "\(\backslash\)n";}
+236 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tAC: " << AC<< "\(\backslash\)n";}
+237 \textcolor{comment}{//    cout << "\(\backslash\)t\(\backslash\)tBC : " <<BC<< "\(\backslash\)n";}
+238 
+239     \textcolor{keywordflow}{if}(AB+AC <= BC || AB+BC <= AC || AC+BC <= AB)
+240     \{
+241         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+242     \}
+243 
+244     \textcolor{keywordtype}{double} relAB\_AC = AB/AC;
+245     \textcolor{keywordtype}{double} relAB\_BC = AB/BC;
+246     \textcolor{keywordtype}{double} relAC\_BC = AC/BC;
+247 
+248     \textcolor{keywordflow}{if}(relAB\_AC < 0.95 || relAB\_AC >1.05)
+249     \{
+250         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+251     \}
+252 
+253     \textcolor{keywordflow}{if}(relAB\_BC < 0.95 || relAB\_BC >1.05)
+254     \{
+255         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+256     \}
+257 
+258     \textcolor{keywordflow}{if}(relAC\_BC < 0.95 ||  relAC\_BC >1.05)
+259     \{
+260         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+261     \}
+262 
+263 
+264 \textcolor{comment}{//    cout << "AB/AC" << AB/AC <<endl;}
+265 \textcolor{comment}{//    cout << "AB/BC" << AB/BC <<endl;}
+266 \textcolor{comment}{//    cout << "AC/BC" << AC/BC <<endl;}
+267 
+268     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
 269 
-270     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-271 
-272 \}
+270 \}
 \end{DoxyCode}
 
 

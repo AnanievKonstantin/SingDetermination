@@ -45,13 +45,13 @@ private:
 
     /**
      * @brief triagleDetection
-     *  Определяет является ли полученный контур триугольником
+     *  Определяет является ли полученный контур треугольником
      * @param imageWithContour
      *  Изображение с нарисованным контуром
      * @param contour
      *  Точки контура
      * @return
-     *  true если контур распознан как триугольник
+     *  true если контур распознан как треугольник
      */
     bool triagleDetection(cv::Mat & imageWithContour, vector<cv::Point> &contour);
 
@@ -79,7 +79,7 @@ private:
      * @param toCircle
      *  Число обнаружений контура круг
      * @param toTriagle
-     *  Число обнаружений контура триугольник
+     *  Число обнаружений контура треугольник
      */
     void CalcProbabilityDetection(double toRect, double toCircle, double toTriagle);
 

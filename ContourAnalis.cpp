@@ -69,6 +69,7 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
      *                  C
      *
      * Определяются точки A,B,C,D
+     * Если точки слишком близк то распознаётся как не ромб
      * Расчитываются отрезки AB, AD, BC,CD
      *
      * Вычисляется площадь ABCD cv::contourArea(contour)
@@ -152,7 +153,6 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
         return false;
     }
 
-
     return true;
 }
 
@@ -171,13 +171,10 @@ bool ContourAnalis::triagleDetection(cv::Mat &imageWithContour, vector<cv::Point
      *                 o
      *                C
      *
-     * триугольник ABC с высотой СH
-     *
-     * При распознании сравнивается параметр площади найденный по формуле 1/2 * AB * CH
-     * и площадь найденная по функции cv::contourArea()
-     *
+     * треугольник ABC с высотой СH
      * Если расстояние между всеми сторонами одинаковое и если H.y не выше (A.x + B.x)/2
-     *  белее чем на AB/4 то распознаётся как триугольник
+     * белее чем на AB/4 то распознаётся как треугольник
+     * Если высоты нет то распознаётся как не треугольник
      */
 
 
@@ -262,6 +259,7 @@ bool ContourAnalis::triagleDetection(cv::Mat &imageWithContour, vector<cv::Point
     {
         return false;
     }
+
 
 //    cout << "AB/AC" << AB/AC <<endl;
 //    cout << "AB/BC" << AB/BC <<endl;
@@ -355,10 +353,10 @@ void ContourAnalis::makeAnalis(list<Storrage *> *contours)
 
             if(triagleDetection(contourImage, vec))
             {
-//                cout << "\t\tТриугольник" << endl;
+//                cout << "\t\tтреугольник" << endl;
                 isTriagle ++;
             }else
-//                cout << "\t\tНE триугольник" << endl;
+//                cout << "\t\tНE треугольник" << endl;
 
             i++;
         }
@@ -367,7 +365,7 @@ void ContourAnalis::makeAnalis(list<Storrage *> *contours)
 
 //    cout << "Это круг на: "<<isCircle<<endl;
 //    cout << "Это ромб на: "<<isRomb<<endl;
-//    cout << "Это триугольник на: "<<isTriagle<<endl;
+//    cout << "Это треугольник на: "<<isTriagle<<endl;
 
     CalcProbabilityDetection(isRomb, isCircle, isTriagle);
     //cv::waitKey();
