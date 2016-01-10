@@ -17,7 +17,7 @@ cv::Mat ContourAnalis::drawContour(const vector<cv::Point> &contour)
         cv::line(drawing, contour.at(i),contour.at(i),color);
     }
 
-    cv::imshow("Contours: " + std::to_string(count), drawing);
+    //cv::imshow("Contours: " + std::to_string(count), drawing);
     count++;
 
     return drawing;
@@ -140,11 +140,107 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
 
 bool ContourAnalis::triagleDetection(cv::Mat &imageWithContour, vector<cv::Point> &contour)
 {
-//    vector<cv::Point>::iterator maxX = std::max_element(contour.begin(), contour.end(),
-//                                                        [](cv::Point a, cv::Point b){ return a.x > b.x;});
+    /**        A      H       B
+     *          o*****o******o
+     *           ************
+     *            **********
+     *             ********
+     *              ******
+     *               ****
+     *                **
+     *                 o
+     *                C
+     *
+     * триугольник ABC с высотой СH
+     *
+     * При распознании сравнивается параметр площади найденный по формуле 1/2 * AB * CH
+     * и площадь найденная по функции cv::contourArea()
+     *
+     * Если расстояние между всеми сторонами одинаковое и если H.y не выше (A.x + B.x)/2
+     *  белее чем на AB/4 то распознаётся как триугольник
+     */
 
 
+    cv::Point A(imageWithContour.cols,imageWithContour.rows);
+    cv::Point B(0,0);
+    cv::Point H(0,0);
+    cv::Point C(0,0);
 
+    for(cv::Point & point: contour)
+    {
+        if(point.x > B.x)
+        {
+            B.x = point.x; B.y = point.y;
+        }
+
+        if(point.y > C.y)
+        {
+            C.x = point.x; C.y = point.y;
+        }
+
+        if(point.x < A.x)
+        {
+            A.x = point.x; A.y = point.y;
+        }
+
+    }
+
+    int AB = (int)distance(B, A);
+
+    for(cv::Point & point: contour)
+    {
+        if(point.x >= (A.x + AB/2) - 5 && point.x <= (B.x - AB/2) + 5)
+        {
+            double dyAB = (A.y + B.y)/2;
+            if(point.y <= (A.y + dyAB) && point.y >= (A.y - dyAB))
+            {
+                if(point.y <= (B.y + dyAB) && point.y >= (B.y - dyAB))
+                {
+                   H.x = point.x; H.y = point.y;
+                }
+            }
+
+        }
+    }
+//    cout << "\t\tA: " << A<< "\n";
+//    cout << "\t\tB: " << B<< "\n";
+//    cout << "\t\tC : " << C<< "\n";
+//    cout << "\t\tH: " << H<< "\n";
+
+    if(H.x == 0 && H.y == 0)
+    {
+        return 0;
+    }
+
+    AB = distance(B,A);
+    double AC = distance(A, C);
+    double BC = distance(B, C);
+
+//    cout << "\t\tAB: " << AB<< "\n";
+//    cout << "\t\tAC: " << AC<< "\n";
+//    cout << "\t\tBC : " <<BC<< "\n";
+
+    if(AB+AC <= BC || AB+BC <= AC || AC+BC <= AB)
+    {
+        return false;
+    }
+
+    double relAB_AC = AB/AC;
+    double relAB_BC = AB/BC;
+    double relAC_BC = AC/BC;
+
+    double dRelation = (relAB_AC + relAB_BC + relAC_BC)/3;
+
+    if(dRelation < 0.95 || dRelation >1.05)
+    {
+        return false;
+    }
+
+//    cout << "AB/AC" << AB/AC <<endl;
+//    cout << "AB/BC" << AB/BC <<endl;
+//    cout << "AC/BC" << AC/BC <<endl;
+
+    return true;
 
 }
 
@@ -189,7 +285,8 @@ int ContourAnalis::makeAnalis(list<Storrage *> *contours)
             if(triagleDetection(contourImage, vec))
             {
                 cout << "\t\tТриугольник" << endl;
-            }
+            }else
+                cout << "\t\tНE триугольник" << endl;
 
             i++;
             cv::waitKey();
