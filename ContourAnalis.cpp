@@ -158,7 +158,9 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
 
 bool ContourAnalis::triagleDetection(cv::Mat &imageWithContour, vector<cv::Point> &contour)
 {
-    /**        A      H       B
+    /**
+     *
+     *         A      H       B
      *          o*****o******o
      *           ************
      *            **********
@@ -280,9 +282,16 @@ double ContourAnalis::distance(cv::Point a, cv::Point b)
 
 void ContourAnalis::CalcProbabilityDetection(double toRect, double toCircle, double toTriagle)
 {
-    double isRect = toRect/36;
-    double isCircle = toCircle/36;
-    double isTriagle = toTriagle/36;
+    double all = (toRect + toCircle + toTriagle);
+    if(all == 0)
+    {
+        cout << " N " <<endl;
+        return;
+    }
+
+    double isRect = toRect/all;
+    double isCircle = toCircle/all;
+    double isTriagle = toTriagle/all;
 
     if(isCircle > isRect && isCircle > isTriagle)
     {

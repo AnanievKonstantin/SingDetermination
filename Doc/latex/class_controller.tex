@@ -1,0 +1,124 @@
+\hypertarget{class_controller}{\section{Класс Controller}
+\label{class_controller}\index{Controller@{Controller}}
+}
+
+
+The \hyperlink{class_controller}{Controller} class Контролиоует процесс выволнения программы. Организует основной цикл программы.  
+
+
+
+
+{\ttfamily \#include $<$Controller.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_controller_a8e70464d23678f363bb3080e34159e02}{Controller} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{class_controller_a0ab87934c4f7a266cfdb86e0f36bc1b5}{$\sim$\+Controller} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+The \hyperlink{class_controller}{Controller} class Контролиоует процесс выволнения программы. Организует основной цикл программы. 
+
+См. определение в файле Controller.\+h строка 13
+
+
+
+\subsection{Конструктор(ы)}
+\hypertarget{class_controller_a8e70464d23678f363bb3080e34159e02}{\index{Controller@{Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!Controller@{Controller}}
+\subsubsection[{Controller}]{\setlength{\rightskip}{0pt plus 5cm}Controller\+::\+Controller (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{class_controller_a8e70464d23678f363bb3080e34159e02}
+
+
+См. определение в файле Controller.\+cpp строка 3
+
+
+\begin{DoxyCode}
+4 \{
+5     \textcolor{keywordtype}{string} path = argv[1];
+6     DIR * folder = opendir(path.c\_str());
+7 
+8     \textcolor{keywordflow}{if}(folder != NULL)
+9     \{
+10         \textcolor{keyword}{struct }dirent * entry;
+11         \textcolor{keywordtype}{string} checkType;
+12 
+13         \hyperlink{class_correction}{Correction} corrector;
+14         \hyperlink{class_search_outlines}{SearchOutlines} searcher;
+15         \hyperlink{class_contour_analis}{ContourAnalis} analisator;
+16 
+17         \textcolor{keywordtype}{int} countFiles = 0;
+18         \textcolor{keywordflow}{while}((entry = readdir(folder)) != NULL)
+19         \{
+20             \textcolor{keywordflow}{try}
+21             \{
+22                 checkType = entry->d\_name;
+23                 \textcolor{keywordflow}{if}(checkType.substr(checkType.find\_last\_of(\textcolor{stringliteral}{"."}) + 1) == \textcolor{stringliteral}{"ppm"})
+24                 \{
+25 
+26                     cout << countFiles <<\textcolor{stringliteral}{") Processing for: "};
+27                     countFiles ++;
+28 \textcolor{comment}{//                    cout << path << entry->d\_name <<endl;}
+29                     cout << entry->d\_name <<\textcolor{stringliteral}{": "};
+30                     \textcolor{keyword}{const} vector<cv::Mat> * correctedImage = corrector.
+      \hyperlink{class_correction_a2a43e98d77beaf6fee39a6fe1bbfbb26}{makeCorrection}(path + entry->d\_name);
+31                     list<Storrage*> * contours = searcher.\hyperlink{class_search_outlines_af38a752797a850533995230928187e32}{search}(correctedImage);
+32 
+33                     analisator.\hyperlink{class_contour_analis_a8c398a82aced99e9e44b378743652a90}{makeAnalis}(contours);
+34 
+35                     \textcolor{keyword}{delete} correctedImage;
+36                     correctedImage = \textcolor{keyword}{nullptr};
+37                     \textcolor{keywordflow}{for}(\hyperlink{class_storrage}{Storrage} * s: *contours)
+38                     \{
+39                         \textcolor{keyword}{delete} s;
+40                     \}
+41                     \textcolor{keyword}{delete} contours;
+42                 \}
+43              \}
+44              \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} std::exception &e)
+45              \{
+46                 cout << \textcolor{stringliteral}{"Expextion"} <<e.what()<<endl;
+47              \}
+48 
+49         \}
+50 
+51         closedir(folder);
+52     \}
+53     \textcolor{keywordflow}{else}
+54     \{
+55         cout << \textcolor{stringliteral}{"Can't to open directory"} <<endl;
+56     \}
+57 
+58 
+59 \}
+\end{DoxyCode}
+\hypertarget{class_controller_a0ab87934c4f7a266cfdb86e0f36bc1b5}{\index{Controller@{Controller}!````~Controller@{$\sim$\+Controller}}
+\index{````~Controller@{$\sim$\+Controller}!Controller@{Controller}}
+\subsubsection[{$\sim$\+Controller}]{\setlength{\rightskip}{0pt plus 5cm}Controller\+::$\sim$\+Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_controller_a0ab87934c4f7a266cfdb86e0f36bc1b5}
+
+
+См. определение в файле Controller.\+cpp строка 61
+
+
+\begin{DoxyCode}
+62 \{
+63 
+64 \}
+\end{DoxyCode}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_controller_8h}{Controller.\+h}\item 
+\hyperlink{_controller_8cpp}{Controller.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,664 @@
+\hypertarget{class_correction}{\section{Класс Correction}
+\label{class_correction}\index{Correction@{Correction}}
+}
+
+
+The \hyperlink{class_correction}{Correction} class Анализирует поступившее изображение и корректирует его для дальнейшего распохнования Увеличивает размер, нормализует цвета, увеличивает-\/уменьшает яркость, четкость и контраст, выделяет желтый, красный, белый.  
+
+
+
+
+{\ttfamily \#include $<$Correction.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_correction_ab2b5a19788aa1940ca828c450a5f5d4f}{Correction} ()
+\item 
+\hyperlink{class_correction_ad13cd5cc763e4cfced5595b1bb69e8dc}{$\sim$\+Correction} ()
+\item 
+vector$<$ cv\+::\+Mat $>$ $\ast$ \hyperlink{class_correction_a2a43e98d77beaf6fee39a6fe1bbfbb26}{make\+Correction} (string \hyperlink{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{path})
+\begin{DoxyCompactList}\small\item\em make\+Correction Корректирует изображение \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_correction_addd8e0c7fbc69b9ba791d80659539731}{create\+Image} ()
+\begin{DoxyCompactList}\small\item\em create\+Image создает cv\+::\+Mat из this-\/$>$path для обработки \end{DoxyCompactList}\item 
+void \hyperlink{class_correction_a9ed7e4258c66b154f585f71815fd477b}{show\+Image} (std\+::string name, cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em show\+Image Выводит изображение на экран и ожидает нажатия любой клавиши для закрытия \end{DoxyCompactList}\item 
+bool \hyperlink{class_correction_a8f6f95589a0bb8df6815832155947390}{is\+White} (const cv\+::\+Vec3b \&pixel)
+\begin{DoxyCompactList}\small\item\em is\+White Определяет является ли пиксель оттенком белого \end{DoxyCompactList}\item 
+bool \hyperlink{class_correction_a1d3860fc36bdf0cb385de6061f87a6b8}{is\+Red} (const cv\+::\+Vec3b \&pixel)
+\begin{DoxyCompactList}\small\item\em is\+Red Определяет является ли пиксель оттенком красного \end{DoxyCompactList}\item 
+bool \hyperlink{class_correction_ac0ebbb080cf4ec47f02f3ac8d61f67df}{is\+Yellow} (const cv\+::\+Vec3b \&pixel)
+\begin{DoxyCompactList}\small\item\em is\+Yellow определит является ли пиксель оттенком желтого \end{DoxyCompactList}\item 
+void \hyperlink{class_correction_a5e8896ab6365772cbeb7f844edd3402d}{increase\+Size\+In} (cv\+::\+Mat \&image, int multiplier)
+\begin{DoxyCompactList}\small\item\em increase\+Size\+In Увеличивает изображение в multiplier раз, сохраняя пропорции \end{DoxyCompactList}\item 
+void \hyperlink{class_correction_adfc060f705da270932f1a8adec8ce567}{increase\+Contrast} (cv\+::\+Mat \&image, double alpha)
+\begin{DoxyCompactList}\small\item\em increase\+Contrast увеличивает контраст изображения \end{DoxyCompactList}\item 
+void \hyperlink{class_correction_ae9b87cadf876be9832d886fb44d913f2}{increase\+Clarity} (cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em increase\+Clarity увеличивает четкочть изображения \end{DoxyCompactList}\item 
+int \hyperlink{class_correction_ab414b82542d44827c55fd3e04e6696f7}{bright} (cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em is\+Dim Определяет является ли изображение тусклым, ярким или оптимальным (не тускло не ярко) \end{DoxyCompactList}\item 
+void \hyperlink{class_correction_a80784bcdd2ac906f3c06713540cc5a0c}{normalize\+Bright} (cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em normalize\+Bright нормализует параметр яркости изображения -\/ делает ярче или тусклее \end{DoxyCompactList}\item 
+vector$<$ cv\+::\+Mat $>$ \& \hyperlink{class_correction_a24fe63583741bbe777222015483d888a}{find\+R\+Y\+W} (const cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em find\+R\+Y\+W Сделает красный, желтый и белый цвета абсолютными\+: белый (255,255,255) красный (0,0,255) желтый (0,255,255) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{path}
+\item 
+cv\+::\+Mat \hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{source\+Image}
+\item 
+vector$<$ cv\+::\+Mat $>$ $\ast$ \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correction\+Result} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+The \hyperlink{class_correction}{Correction} class Анализирует поступившее изображение и корректирует его для дальнейшего распохнования Увеличивает размер, нормализует цвета, увеличивает-\/уменьшает яркость, четкость и контраст, выделяет желтый, красный, белый. 
+
+См. определение в файле Correction.\+h строка 11
+
+
+
+\subsection{Конструктор(ы)}
+\hypertarget{class_correction_ab2b5a19788aa1940ca828c450a5f5d4f}{\index{Correction@{Correction}!Correction@{Correction}}
+\index{Correction@{Correction}!Correction@{Correction}}
+\subsubsection[{Correction}]{\setlength{\rightskip}{0pt plus 5cm}Correction\+::\+Correction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_correction_ab2b5a19788aa1940ca828c450a5f5d4f}
+
+
+См. определение в файле Correction.\+cpp строка 3
+
+
+\begin{DoxyCode}
+4 \{
+5 
+6 \}
+\end{DoxyCode}
+\hypertarget{class_correction_ad13cd5cc763e4cfced5595b1bb69e8dc}{\index{Correction@{Correction}!````~Correction@{$\sim$\+Correction}}
+\index{````~Correction@{$\sim$\+Correction}!Correction@{Correction}}
+\subsubsection[{$\sim$\+Correction}]{\setlength{\rightskip}{0pt plus 5cm}Correction\+::$\sim$\+Correction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_correction_ad13cd5cc763e4cfced5595b1bb69e8dc}
+
+
+См. определение в файле Correction.\+cpp строка 8
+
+
+\begin{DoxyCode}
+9 \{
+10 
+11 \}
+\end{DoxyCode}
+
+
+\subsection{Методы}
+\hypertarget{class_correction_ab414b82542d44827c55fd3e04e6696f7}{\index{Correction@{Correction}!bright@{bright}}
+\index{bright@{bright}!Correction@{Correction}}
+\subsubsection[{bright}]{\setlength{\rightskip}{0pt plus 5cm}int Correction\+::bright (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_ab414b82542d44827c55fd3e04e6696f7}
+
+
+is\+Dim Определяет является ли изображение тусклым, ярким или оптимальным (не тускло не ярко) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em image} & Изображение в H\+S\+V \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+1 если среднее Value изображения $<$= 85 2 если среднее Value изображения $>$= 170 3 если среднее Value изображения принадлежит (85, 170) 
+\end{DoxyReturn}
+
+
+См. определение в файле Correction.\+cpp строка 112
+
+
+\begin{DoxyCode}
+113 \{
+114     cv::MatConstIterator\_<cv::Vec3b> it, end;
+115 
+116     \textcolor{keywordtype}{long} value = 0;
+117     \textcolor{keywordflow}{for}( it = image.begin<cv::Vec3b>(),end = image.end<cv::Vec3b>(); it != end; ++it)
+118     \{
+119         value += (*it)[2];
+120     \}
+121 
+122     \textcolor{keywordtype}{long} dValue = value/(image.cols*image.rows);
+123 
+124     \textcolor{keywordflow}{if}(dValue <= 85)
+125         \textcolor{keywordflow}{return} 1;
+126     \textcolor{keywordflow}{if}(dValue >= 170)
+127         \textcolor{keywordflow}{return} 2;
+128     \textcolor{keywordflow}{if}(dValue > 85 && dValue < 170)
+129         \textcolor{keywordflow}{return} 3;
+130 \}
+\end{DoxyCode}
+\hypertarget{class_correction_addd8e0c7fbc69b9ba791d80659539731}{\index{Correction@{Correction}!create\+Image@{create\+Image}}
+\index{create\+Image@{create\+Image}!Correction@{Correction}}
+\subsubsection[{create\+Image}]{\setlength{\rightskip}{0pt plus 5cm}void Correction\+::create\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_addd8e0c7fbc69b9ba791d80659539731}
+
+
+create\+Image создает cv\+::\+Mat из this-\/$>$path для обработки 
+
+
+
+См. определение в файле Correction.\+cpp строка 13
+
+
+\begin{DoxyCode}
+14 \{
+15     this->\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage} = cv::imread(this->\hyperlink{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{path});
+16 \}
+\end{DoxyCode}
+\hypertarget{class_correction_a24fe63583741bbe777222015483d888a}{\index{Correction@{Correction}!find\+R\+Y\+W@{find\+R\+Y\+W}}
+\index{find\+R\+Y\+W@{find\+R\+Y\+W}!Correction@{Correction}}
+\subsubsection[{find\+R\+Y\+W}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cv\+::\+Mat $>$ \& Correction\+::find\+R\+Y\+W (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Mat \&}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a24fe63583741bbe777222015483d888a}
+
+
+find\+R\+Y\+W Сделает красный, желтый и белый цвета абсолютными\+: белый (255,255,255) красный (0,0,255) желтый (0,255,255) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em image} & изображение в B\+G\+R \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+vector \mbox{[}red,yellow, white\mbox{]} 
+\end{DoxyReturn}
+
+
+См. определение в файле Correction.\+cpp строка 156
+
+
+\begin{DoxyCode}
+157 \{
+158     cv::MatIterator\_<cv::Vec3b> itR,itY,itW;
+159     cv::MatConstIterator\_<cv::Vec3b> it, end;
+160     vector<cv::Mat> * colors = \textcolor{keyword}{new} vector<cv::Mat>(3);
+161     colors->at(0) = image.clone();\textcolor{comment}{//Red}
+162     colors->at(1) = image.clone();\textcolor{comment}{//Yellow}
+163     colors->at(2) = image.clone();\textcolor{comment}{//White}
+164 
+165     \textcolor{keywordflow}{for}( it = image.begin<cv::Vec3b>(),
+166          itR = colors->at(0).begin<cv::Vec3b>(),
+167          itY = colors->at(1).begin<cv::Vec3b>(),
+168          itW = colors->at(2).begin<cv::Vec3b>(),
+169          end = image.end<cv::Vec3b>(); it != end; ++it,++itR,++itY,++itW)
+170     \{
+171         \textcolor{keywordflow}{if}(\hyperlink{class_correction_a1d3860fc36bdf0cb385de6061f87a6b8}{isRed}(*it))
+172         \{
+173             (*itR)[0] = 0;
+174             (*itR)[1] = 0;
+175             (*itR)[2] = 255;
+176         \}
+177         \textcolor{keywordflow}{else}
+178         \{
+179             (*itR)[0] = 0;
+180             (*itR)[1] = 0;
+181             (*itR)[2] = 0;
+182         \}
+183 
+184         \textcolor{keywordflow}{if}(\hyperlink{class_correction_ac0ebbb080cf4ec47f02f3ac8d61f67df}{isYellow}(*it))
+185         \{
+186             (*itY)[0] = 0;
+187             (*itY)[1] = 255;
+188             (*itY)[2] = 255;
+189         \}
+190         \textcolor{keywordflow}{else}
+191         \{
+192             (*itY)[0] = 0;
+193             (*itY)[1] = 0;
+194             (*itY)[2] = 0;
+195         \}
+196 
+197         \textcolor{keywordflow}{if}(\hyperlink{class_correction_a8f6f95589a0bb8df6815832155947390}{isWhite}(*it))
+198         \{
+199             (*itW)[0] = 255;
+200             (*itW)[1] = 255;
+201             (*itW)[2] = 255;
+202         \}
+203         \textcolor{keywordflow}{else}
+204         \{
+205             (*itW)[0] = 0;
+206             (*itW)[1] = 0;
+207             (*itW)[2] = 0;
+208         \}
+209     \}
+210     \textcolor{keywordflow}{return} * colors;
+211 \}
+\end{DoxyCode}
+\hypertarget{class_correction_ae9b87cadf876be9832d886fb44d913f2}{\index{Correction@{Correction}!increase\+Clarity@{increase\+Clarity}}
+\index{increase\+Clarity@{increase\+Clarity}!Correction@{Correction}}
+\subsubsection[{increase\+Clarity}]{\setlength{\rightskip}{0pt plus 5cm}void Correction\+::increase\+Clarity (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_ae9b87cadf876be9832d886fb44d913f2}
+
+
+increase\+Clarity увеличивает четкочть изображения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em image} & изображение для увеличения четкости \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Correction.\+cpp строка 103
+
+
+\begin{DoxyCode}
+104 \{
+105 
+106     \textcolor{keyword}{const} cv::Mat kernel = (cv::Mat\_<double>(3,3) << -0.1,-0.1,-0.1,
+107                                                      -0.1,   2,-0.1,
+108                                                      -0.1,-0.1,-0.1);
+109     cv::filter2D(image, image, image.depth(), kernel);
+110 \}
+\end{DoxyCode}
+\hypertarget{class_correction_adfc060f705da270932f1a8adec8ce567}{\index{Correction@{Correction}!increase\+Contrast@{increase\+Contrast}}
+\index{increase\+Contrast@{increase\+Contrast}!Correction@{Correction}}
+\subsubsection[{increase\+Contrast}]{\setlength{\rightskip}{0pt plus 5cm}void Correction\+::increase\+Contrast (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{image, }
+\item[{double}]{alpha}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_adfc060f705da270932f1a8adec8ce567}
+
+
+increase\+Contrast увеличивает контраст изображения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em image} & Изображение для контрастирования в B\+G\+R \\
+\hline
+{\em alpha} & коэффициент увеличения alpha in \mbox{[}1.\+0, 3.\+0\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Correction.\+cpp строка 84
+
+
+\begin{DoxyCode}
+85 \{
+86     \textcolor{keywordflow}{if}(alpha < 1 || alpha > 3)
+87     \{
+88         \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"alpha most be in [1.0, 3.0]"});
+89     \}
+90 
+91     \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} y = 0; y < image.rows; y++ )
+92     \{
+93         \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} x = 0; x < image.cols; x++ )
+94         \{
+95             \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} c = 0; c < 3; c++ )
+96             \{
+97                 image.at<cv::Vec3b>(y,x)[c] = cv::saturate\_cast<uchar>( alpha*(image.at<cv::Vec3b>(y,x)[c] 
+      ));
+98             \}
+99         \}
+100     \}
+101 \}
+\end{DoxyCode}
+\hypertarget{class_correction_a5e8896ab6365772cbeb7f844edd3402d}{\index{Correction@{Correction}!increase\+Size\+In@{increase\+Size\+In}}
+\index{increase\+Size\+In@{increase\+Size\+In}!Correction@{Correction}}
+\subsubsection[{increase\+Size\+In}]{\setlength{\rightskip}{0pt plus 5cm}void Correction\+::increase\+Size\+In (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{image, }
+\item[{int}]{multiplier}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a5e8896ab6365772cbeb7f844edd3402d}
+
+
+increase\+Size\+In Увеличивает изображение в multiplier раз, сохраняя пропорции 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em image} & Картинка для увеличения \\
+\hline
+{\em multiplier} & множитель\+: new size = image.\+size() $\ast$ multiplier;  \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Correction.\+cpp строка 79
+
+
+\begin{DoxyCode}
+80 \{
+81     cv::resize(image, image, image.size() * multiplier);
+82 \}
+\end{DoxyCode}
+\hypertarget{class_correction_a1d3860fc36bdf0cb385de6061f87a6b8}{\index{Correction@{Correction}!is\+Red@{is\+Red}}
+\index{is\+Red@{is\+Red}!Correction@{Correction}}
+\subsubsection[{is\+Red}]{\setlength{\rightskip}{0pt plus 5cm}bool Correction\+::is\+Red (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Vec3b \&}]{pixel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a1d3860fc36bdf0cb385de6061f87a6b8}
+
+
+is\+Red Определяет является ли пиксель оттенком красного 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em pixel} & пиксель в B\+G\+R \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если является, else false 
+\end{DoxyReturn}
+
+
+См. определение в файле Correction.\+cpp строка 44
+
+
+\begin{DoxyCode}
+45 \{
+46     \textcolor{keywordflow}{if}(pixel[0] <= 127 && pixel[1] <= 127 && pixel[2] >= 127)
+47     \{
+48         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+49     \}
+50 
+51     \textcolor{keywordflow}{if}(pixel[2] >= pixel[0]*2 && pixel[2] >= pixel[1]*2)
+52     \{
+53         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+54     \}
+55 
+56     \textcolor{keywordflow}{if}(pixel[2] >= pixel[0]/3 + pixel[0] && pixel[2] >= pixel[1]/3 + pixel[1])
+57     \{
+58         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+59     \}
+60 
+61     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+62 \}
+\end{DoxyCode}
+\hypertarget{class_correction_a8f6f95589a0bb8df6815832155947390}{\index{Correction@{Correction}!is\+White@{is\+White}}
+\index{is\+White@{is\+White}!Correction@{Correction}}
+\subsubsection[{is\+White}]{\setlength{\rightskip}{0pt plus 5cm}bool Correction\+::is\+White (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Vec3b \&}]{pixel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a8f6f95589a0bb8df6815832155947390}
+
+
+is\+White Определяет является ли пиксель оттенком белого 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em pixel} & пиксель в B\+G\+R \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если является, else false 
+\end{DoxyReturn}
+
+
+См. определение в файле Correction.\+cpp строка 25
+
+
+\begin{DoxyCode}
+26 \{
+27     \textcolor{keywordtype}{int} BonG = pixel[0] - pixel[1];
+28     \textcolor{keywordtype}{int} GonR = pixel[1] - pixel[2];
+29 
+30     \textcolor{comment}{//int delta = std::abs(BonG - GonR);}
+31     \textcolor{keywordflow}{if}(pixel[0] >= 127 && pixel[1] >= 127 && pixel[2] >= 127)
+32     \{
+33         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+34     \}
+35 
+36 \textcolor{comment}{//    if(delta >= 0 && delta <=10)}
+37 \textcolor{comment}{//    \{}
+38 \textcolor{comment}{//        return true;}
+39 \textcolor{comment}{//    \}}
+40 
+41     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+42 \}
+\end{DoxyCode}
+\hypertarget{class_correction_ac0ebbb080cf4ec47f02f3ac8d61f67df}{\index{Correction@{Correction}!is\+Yellow@{is\+Yellow}}
+\index{is\+Yellow@{is\+Yellow}!Correction@{Correction}}
+\subsubsection[{is\+Yellow}]{\setlength{\rightskip}{0pt plus 5cm}bool Correction\+::is\+Yellow (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Vec3b \&}]{pixel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_ac0ebbb080cf4ec47f02f3ac8d61f67df}
+
+
+is\+Yellow определит является ли пиксель оттенком желтого 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em pixel} & пиксель в B\+G\+R \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если является, else false 
+\end{DoxyReturn}
+
+
+См. определение в файле Correction.\+cpp строка 64
+
+
+\begin{DoxyCode}
+65 \{
+66     \textcolor{keywordflow}{if}(pixel[2] >= pixel[1] && pixel[1] > pixel[0])
+67     \{
+68         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+69     \}
+70 
+71     \textcolor{keywordflow}{if}(pixel[0] <= 127 && pixel[1] >= 127 && pixel[2] >= 127)
+72     \{
+73         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+74     \}
+75 
+76     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+77 \}
+\end{DoxyCode}
+\hypertarget{class_correction_a2a43e98d77beaf6fee39a6fe1bbfbb26}{\index{Correction@{Correction}!make\+Correction@{make\+Correction}}
+\index{make\+Correction@{make\+Correction}!Correction@{Correction}}
+\subsubsection[{make\+Correction}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cv\+::\+Mat $>$ $\ast$ Correction\+::make\+Correction (
+\begin{DoxyParamCaption}
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_correction_a2a43e98d77beaf6fee39a6fe1bbfbb26}
+
+
+make\+Correction Корректирует изображение 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em path} & Путь к избражению \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+массив скорректированных изображений vector\mbox{[}0\mbox{]} -\/ исходное vector\mbox{[}1\mbox{]} -\/ яркое vector\mbox{[}2\mbox{]} -\/ контрасное vector\mbox{[}3\mbox{]} -\/ с выделенным красным vector\mbox{[}4\mbox{]} -\/ с выделенным жёлтым vector\mbox{[}5\mbox{]} -\/ с выделенным белым 
+\end{DoxyReturn}
+
+
+См. определение в файле Correction.\+cpp строка 213
+
+
+\begin{DoxyCode}
+214 \{
+215     this->\hyperlink{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{path} = \hyperlink{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{path};
+216     this->\hyperlink{class_correction_addd8e0c7fbc69b9ba791d80659539731}{createImage}();
+217 
+218     cv::Mat imageHSV;
+219 
+220     \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult} = \textcolor{keyword}{new} vector<cv::Mat>;
+221     \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult}->reserve(6);
+222 
+223 
+224     cv::resize(\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}, \hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}, \hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}.size()*5,
+      cv::INTER\_NEAREST);
+225 
+226     \textcolor{comment}{//cv::imshow("Start", this->sourceImage);}
+227 
+228     cv::xphoto::autowbGrayworld(this->\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}, this->\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage});
+229 
+230 \textcolor{comment}{//    cv::blur(sourceImage, sourceImage,cv::Size(5,5));}
+231 
+232     \hyperlink{class_correction_ae9b87cadf876be9832d886fb44d913f2}{increaseClarity}(\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage});
+233 
+234     \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult}->push\_back(\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}.clone()); \textcolor{comment}{//source}
+235 
+236     cv::Mat contrast = \hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}.clone();
+237 
+238     cv::cvtColor(\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}, imageHSV, CV\_BGR2HSV);
+239 
+240     \hyperlink{class_correction_a80784bcdd2ac906f3c06713540cc5a0c}{normalizeBright}(imageHSV);
+241 
+242     cv::cvtColor(imageHSV, \hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}, CV\_HSV2BGR);
+243 
+244     \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult}->push\_back(\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage}.clone()); \textcolor{comment}{//bright}
+245 
+246     \hyperlink{class_correction_adfc060f705da270932f1a8adec8ce567}{increaseContrast}(contrast, 2);
+247 
+248     \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult}->push\_back(contrast.clone()); \textcolor{comment}{//contrast}
+249 
+250 \textcolor{comment}{//    cv::imshow("Correct", this->sourceImage);}
+251 
+252     vector<cv::Mat> colors = \hyperlink{class_correction_a24fe63583741bbe777222015483d888a}{findRYW}(\hyperlink{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{sourceImage});
+253 
+254 \textcolor{comment}{//    cv::imshow("Red", colors[0]);}
+255 \textcolor{comment}{//    cv::imshow("Yellow", colors[1]);}
+256 \textcolor{comment}{//    cv::imshow("White", colors[2]);}
+257 
+258     \textcolor{comment}{//reg yellow white}
+259     \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult}->insert(\hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult}->end(), colors.begin(),colors
+      .end());
+260 
+261     \textcolor{comment}{//cv::waitKey(0);}
+262 
+263     \textcolor{comment}{//cv::destroyAllWindows();}
+264 
+265     \textcolor{keywordflow}{return} \hyperlink{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{correctionResult};
+266 \}
+\end{DoxyCode}
+\hypertarget{class_correction_a80784bcdd2ac906f3c06713540cc5a0c}{\index{Correction@{Correction}!normalize\+Bright@{normalize\+Bright}}
+\index{normalize\+Bright@{normalize\+Bright}!Correction@{Correction}}
+\subsubsection[{normalize\+Bright}]{\setlength{\rightskip}{0pt plus 5cm}void Correction\+::normalize\+Bright (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a80784bcdd2ac906f3c06713540cc5a0c}
+
+
+normalize\+Bright нормализует параметр яркости изображения -\/ делает ярче или тусклее 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em image} & Изображение в H\+S\+V \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Correction.\+cpp строка 132
+
+
+\begin{DoxyCode}
+133 \{
+134     cv::MatIterator\_<cv::Vec3b> it, end;
+135     \textcolor{keywordflow}{switch}(\hyperlink{class_correction_ab414b82542d44827c55fd3e04e6696f7}{bright}(image))
+136     \{
+137         \textcolor{keywordflow}{case} 3:
+138         \textcolor{keywordflow}{break};
+139 
+140         \textcolor{keywordflow}{case} 1:
+141             \textcolor{keywordflow}{for}( it = image.begin<cv::Vec3b>(),end = image.end<cv::Vec3b>(); it != end; ++it)
+142             \{
+143                  (*it)[2] += (*it)[2]/3;
+144             \}
+145         \textcolor{keywordflow}{break};
+146 
+147         \textcolor{keywordflow}{case} 2:
+148             \textcolor{keywordflow}{for}( it = image.begin<cv::Vec3b>(),end = image.end<cv::Vec3b>(); it != end; ++it)
+149             \{
+150                  (*it)[2] -= (*it)[2]/3;
+151             \}
+152         \textcolor{keywordflow}{break};
+153     \}
+154 \}
+\end{DoxyCode}
+\hypertarget{class_correction_a9ed7e4258c66b154f585f71815fd477b}{\index{Correction@{Correction}!show\+Image@{show\+Image}}
+\index{show\+Image@{show\+Image}!Correction@{Correction}}
+\subsubsection[{show\+Image}]{\setlength{\rightskip}{0pt plus 5cm}void Correction\+::show\+Image (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{cv\+::\+Mat \&}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a9ed7e4258c66b154f585f71815fd477b}
+
+
+show\+Image Выводит изображение на экран и ожидает нажатия любой клавиши для закрытия 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em image} & картинка для вывода \\
+\hline
+{\em name} & заголовок окна  \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Correction.\+cpp строка 18
+
+
+\begin{DoxyCode}
+19 \{
+20     cv::imshow(name, image);
+21     cv::waitKey(0);
+22     cv::destroyWindow(name);
+23 \}
+\end{DoxyCode}
+
+
+\subsection{Данные класса}
+\hypertarget{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{\index{Correction@{Correction}!correction\+Result@{correction\+Result}}
+\index{correction\+Result@{correction\+Result}!Correction@{Correction}}
+\subsubsection[{correction\+Result}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Mat$>$$\ast$ Correction\+::correction\+Result = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}
+
+
+См. определение в файле Correction.\+h строка 148
+
+\hypertarget{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{\index{Correction@{Correction}!path@{path}}
+\index{path@{path}!Correction@{Correction}}
+\subsubsection[{path}]{\setlength{\rightskip}{0pt plus 5cm}string Correction\+::path\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}
+
+
+См. определение в файле Correction.\+h строка 146
+
+\hypertarget{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{\index{Correction@{Correction}!source\+Image@{source\+Image}}
+\index{source\+Image@{source\+Image}!Correction@{Correction}}
+\subsubsection[{source\+Image}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Correction\+::source\+Image\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}
+
+
+См. определение в файле Correction.\+h строка 147
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_correction_8h}{Correction.\+h}\item 
+\hyperlink{_correction_8cpp}{Correction.\+cpp}\end{DoxyCompactItemize}

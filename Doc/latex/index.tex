@@ -1,0 +1,22 @@
+Программа по определению типа дорожного знака на изображении. Принимает на вход путь к директории, в которой располагаются изображения типы P\+P\+M see also \hyperlink{_controller_8h}{Controller.\+h} читает имя изображения из директории. Затем создаёт cv\+::\+Mat из изображения по считанному пути. Затем производит коррекции над полученной матрицей see also \hyperlink{_correction_8h}{Correction.\+h}. Скорректированные изображения поступают в see also \hyperlink{_search_outlines_8h}{Search\+Outlines.\+h} и там производится поиск контуров по скорректированным изображениям и их H\+S\+V значениям. Выделенные контуры поступают в see also \hyperlink{_contour_analis_8h}{Contour\+Analis.\+h}, Где выволняет контурный анализ и выявляются круги-\/овалы(O), ромбы-\/квадраты(R), триугольники(\+D). После производится расчет вероятности распознания знака. После выводится результат в вседующем виде\+: $<$image number$>$=\char`\"{}\char`\"{}$>$ \char`\"{})\+Processing for\+:\char`\"{} $<$image name$>$=\char`\"{}\char`\"{}$>$ \char`\"{}\+:\char`\"{} $<$sign type$>$=\char`\"{}\char`\"{}$>$ $<$probability\+Detection$>$ примеры\+:~\newline
+ 35) Processing for\+: O\+\_\+02780.\+ppm\+: O 0.\+388889 ~\newline
+ 36) Processing for\+: O\+\_\+02797.\+ppm\+: O 0.\+111111 ~\newline
+ 37) Processing for\+: O\+\_\+03120.\+ppm\+: O 0.\+0833333 ~\newline
+ 38) Processing for\+: O\+\_\+03682.\+ppm\+: O 0.\+0277778 ~\newline
+ 39) Processing for\+: O\+\_\+04254.\+ppm\+: O 0.\+222222 ~\newline
+ 40) Processing for\+: O\+\_\+04556.\+ppm\+: O 0.\+444444 ~\newline
+ 41) Processing for\+: O\+\_\+05305.\+ppm\+: O 0.\+0555556 ~\newline
+ 42) Processing for\+: O\+\_\+05995.\+ppm\+: O 0.\+194444 ~\newline
+ 43) Processing for\+: O\+\_\+06256.\+ppm\+: O 0.\+527778 ~\newline
+ ~\newline
+ sign type\+: определяют слудующие знаки~\newline
+ D -\/ \char`\"{}Уступи дорогу\char`\"{}~\newline
+ R -\/ \char`\"{}Главная дорога\char`\"{}~\newline
+ O -\/ \char`\"{}Движение запрещено\char`\"{}~\newline
+ N -\/ знак не найден или вероятность найти несколько знаков одинакова ~\newline
+ \begin{DoxyAuthor}{Автор}
+Ананьек Константин
+\end{DoxyAuthor}
+\begin{DoxyDate}{Дата}
+04.\+01.\+16 
+\end{DoxyDate}

@@ -1,0 +1,145 @@
+\hypertarget{class_storrage}{\section{Класс Storrage}
+\label{class_storrage}\index{Storrage@{Storrage}}
+}
+
+
+The \hyperlink{class_storrage}{Storrage} class Хранит значения контуров и их иерархии  
+
+
+
+
+{\ttfamily \#include $<$Storrage.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_storrage_a51a322ff4c3674beaa88417fc437a832}{Storrage} (vector$<$ vector$<$ cv\+::\+Point $>$$>$ $\ast$\hyperlink{class_storrage_a383c9368b9070a2e80ae546b2b403840}{contours}, vector$<$ cv\+::\+Vec4i $>$ $\ast$hierarhy)
+\item 
+\hyperlink{class_storrage_abe3fcfc281daf37b66a1f56a2d0f27d0}{$\sim$\+Storrage} ()
+\item 
+vector$<$ vector$<$ cv\+::\+Point $>$ $>$ $\ast$ \hyperlink{class_storrage_a72d26a95d988cde880a765cf6bb909a3}{get\+Contours} () const 
+\item 
+vector$<$ cv\+::\+Vec4i $>$ $\ast$ \hyperlink{class_storrage_a96e7f72594728b9ffdebd62d390938ec}{get\+Hierarhy} () const 
+\end{DoxyCompactItemize}
+\subsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ vector$<$ cv\+::\+Point $>$ $>$ $\ast$ \hyperlink{class_storrage_a383c9368b9070a2e80ae546b2b403840}{contours} = nullptr
+\item 
+vector$<$ cv\+::\+Vec4i $>$ $\ast$ \hyperlink{class_storrage_a07627c89e8ac2b17b05039ffae257511}{hierarchy\+Of\+Contours} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+The \hyperlink{class_storrage}{Storrage} class Хранит значения контуров и их иерархии 
+
+См. определение в файле Storrage.\+h строка 10
+
+
+
+\subsection{Конструктор(ы)}
+\hypertarget{class_storrage_a51a322ff4c3674beaa88417fc437a832}{\index{Storrage@{Storrage}!Storrage@{Storrage}}
+\index{Storrage@{Storrage}!Storrage@{Storrage}}
+\subsubsection[{Storrage}]{\setlength{\rightskip}{0pt plus 5cm}Storrage\+::\+Storrage (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ cv\+::\+Point $>$$>$ $\ast$}]{contours, }
+\item[{vector$<$ cv\+::\+Vec4i $>$ $\ast$}]{hierarhy}
+\end{DoxyParamCaption}
+)}}\label{class_storrage_a51a322ff4c3674beaa88417fc437a832}
+
+
+См. определение в файле Storrage.\+cpp строка 3
+
+
+\begin{DoxyCode}
+4 \{
+5     \textcolor{comment}{//cout << "In constract" << endl;}
+6     \textcolor{keywordflow}{if}(\hyperlink{class_storrage_a383c9368b9070a2e80ae546b2b403840}{contours} == \textcolor{keyword}{nullptr} || hierarhy == \textcolor{keyword}{nullptr})
+7     \{
+8         \textcolor{comment}{//cout << "Null" << endl;}
+9         \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"contours == nullptr || hierarhy == nullptr is true"});
+10     \}
+11 
+12     this->\hyperlink{class_storrage_a383c9368b9070a2e80ae546b2b403840}{contours} = \hyperlink{class_storrage_a383c9368b9070a2e80ae546b2b403840}{contours};
+13     this->\hyperlink{class_storrage_a07627c89e8ac2b17b05039ffae257511}{hierarchyOfContours} = hierarhy;
+14 \}
+\end{DoxyCode}
+\hypertarget{class_storrage_abe3fcfc281daf37b66a1f56a2d0f27d0}{\index{Storrage@{Storrage}!````~Storrage@{$\sim$\+Storrage}}
+\index{````~Storrage@{$\sim$\+Storrage}!Storrage@{Storrage}}
+\subsubsection[{$\sim$\+Storrage}]{\setlength{\rightskip}{0pt plus 5cm}Storrage\+::$\sim$\+Storrage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_storrage_abe3fcfc281daf37b66a1f56a2d0f27d0}
+
+
+См. определение в файле Storrage.\+cpp строка 16
+
+
+\begin{DoxyCode}
+17 \{
+18     \textcolor{comment}{//cout << "In de constract" << endl;}
+19     \textcolor{keyword}{delete} \hyperlink{class_storrage_a383c9368b9070a2e80ae546b2b403840}{contours};
+20     \textcolor{keyword}{delete} \hyperlink{class_storrage_a07627c89e8ac2b17b05039ffae257511}{hierarchyOfContours};
+21 \}
+\end{DoxyCode}
+
+
+\subsection{Методы}
+\hypertarget{class_storrage_a72d26a95d988cde880a765cf6bb909a3}{\index{Storrage@{Storrage}!get\+Contours@{get\+Contours}}
+\index{get\+Contours@{get\+Contours}!Storrage@{Storrage}}
+\subsubsection[{get\+Contours}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ vector$<$ cv\+::\+Point $>$ $>$ $\ast$ Storrage\+::get\+Contours (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_storrage_a72d26a95d988cde880a765cf6bb909a3}
+
+
+См. определение в файле Storrage.\+cpp строка 23
+
+
+\begin{DoxyCode}
+24 \{
+25     \textcolor{keywordflow}{return} \hyperlink{class_storrage_a383c9368b9070a2e80ae546b2b403840}{contours};
+26 \}
+\end{DoxyCode}
+\hypertarget{class_storrage_a96e7f72594728b9ffdebd62d390938ec}{\index{Storrage@{Storrage}!get\+Hierarhy@{get\+Hierarhy}}
+\index{get\+Hierarhy@{get\+Hierarhy}!Storrage@{Storrage}}
+\subsubsection[{get\+Hierarhy}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cv\+::\+Vec4i $>$ $\ast$ Storrage\+::get\+Hierarhy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_storrage_a96e7f72594728b9ffdebd62d390938ec}
+
+
+См. определение в файле Storrage.\+cpp строка 28
+
+
+\begin{DoxyCode}
+29 \{
+30     \textcolor{keywordflow}{return} \hyperlink{class_storrage_a07627c89e8ac2b17b05039ffae257511}{hierarchyOfContours};
+31 \}
+\end{DoxyCode}
+
+
+\subsection{Данные класса}
+\hypertarget{class_storrage_a383c9368b9070a2e80ae546b2b403840}{\index{Storrage@{Storrage}!contours@{contours}}
+\index{contours@{contours}!Storrage@{Storrage}}
+\subsubsection[{contours}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$vector$<$cv\+::\+Point$>$ $>$$\ast$ Storrage\+::contours = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_storrage_a383c9368b9070a2e80ae546b2b403840}
+
+
+См. определение в файле Storrage.\+h строка 20
+
+\hypertarget{class_storrage_a07627c89e8ac2b17b05039ffae257511}{\index{Storrage@{Storrage}!hierarchy\+Of\+Contours@{hierarchy\+Of\+Contours}}
+\index{hierarchy\+Of\+Contours@{hierarchy\+Of\+Contours}!Storrage@{Storrage}}
+\subsubsection[{hierarchy\+Of\+Contours}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Vec4i$>$$\ast$ Storrage\+::hierarchy\+Of\+Contours = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_storrage_a07627c89e8ac2b17b05039ffae257511}
+
+
+См. определение в файле Storrage.\+h строка 21
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_storrage_8h}{Storrage.\+h}\item 
+\hyperlink{_storrage_8cpp}{Storrage.\+cpp}\end{DoxyCompactItemize}

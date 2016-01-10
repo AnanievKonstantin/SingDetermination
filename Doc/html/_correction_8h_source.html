@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Распознование знаков: Исходный файл Correction.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Распознование знаков
+   </div>
+   <div id="projectbrief">Программа по распознованию нескольких типов дорожных знаков</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_correction_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Correction.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_correction_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CORRECTION_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CORRECTION_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_tools_8h.html">Tools.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_correction.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_correction.html">Correction</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="class_correction.html#ab2b5a19788aa1940ca828c450a5f5d4f">Correction</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_correction.html#ad13cd5cc763e4cfced5595b1bb69e8dc">~Correction</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        vector&lt;cv::Mat&gt; * <a class="code" href="class_correction.html#a2a43e98d77beaf6fee39a6fe1bbfbb26">makeCorrection</a>(<span class="keywordtype">string</span> <a class="code" href="class_correction.html#a6e1ccea5c33ea89d717d9227d17f625c">path</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_correction.html#addd8e0c7fbc69b9ba791d80659539731">createImage</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_correction.html#a9ed7e4258c66b154f585f71815fd477b">showImage</a>(std::string name, cv::Mat &amp; image);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_correction.html#a8f6f95589a0bb8df6815832155947390">isWhite</a>(<span class="keyword">const</span> cv::Vec3b &amp; pixel);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_correction.html#a1d3860fc36bdf0cb385de6061f87a6b8">isRed</a>(<span class="keyword">const</span> cv::Vec3b &amp; pixel);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_correction.html#ac0ebbb080cf4ec47f02f3ac8d61f67df">isYellow</a>(<span class="keyword">const</span> cv::Vec3b &amp; pixel);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_correction.html#a5e8896ab6365772cbeb7f844edd3402d">increaseSizeIn</a>(cv::Mat &amp; image, <span class="keywordtype">int</span> multiplier);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_correction.html#adfc060f705da270932f1a8adec8ce567">increaseContrast</a>(cv::Mat &amp; image, <span class="keywordtype">double</span> alpha);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_correction.html#ae9b87cadf876be9832d886fb44d913f2">increaseClarity</a>(cv::Mat &amp; image);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_correction.html#ab414b82542d44827c55fd3e04e6696f7">bright</a>(cv::Mat &amp; image);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_correction.html#a80784bcdd2ac906f3c06713540cc5a0c">normalizeBright</a>(cv::Mat &amp; image);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        vector&lt;cv::Mat&gt; &amp; <a class="code" href="class_correction.html#a24fe63583741bbe777222015483d888a">findRYW</a>(<span class="keyword">const</span> cv::Mat &amp; image);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="class_correction.html#a6e1ccea5c33ea89d717d9227d17f625c">  146</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_correction.html#a6e1ccea5c33ea89d717d9227d17f625c">path</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_correction.html#a1344ad4fb7d6a6346c2524e06feddd4b">  147</a></span>&#160;        cv::Mat <a class="code" href="class_correction.html#a1344ad4fb7d6a6346c2524e06feddd4b">sourceImage</a>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="class_correction.html#a02fff781df4df45a3bb6f0a2484cafcc">  148</a></span>&#160;        vector&lt;cv::Mat&gt; * <a class="code" href="class_correction.html#a02fff781df4df45a3bb6f0a2484cafcc">correctionResult</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;};</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif // CORRECTION_H</span></div>
+<div class="ttc" id="class_correction_html_a1344ad4fb7d6a6346c2524e06feddd4b"><div class="ttname"><a href="class_correction.html#a1344ad4fb7d6a6346c2524e06feddd4b">Correction::sourceImage</a></div><div class="ttdeci">cv::Mat sourceImage</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8h_source.html#l00147">Correction.h:147</a></div></div>
+<div class="ttc" id="class_correction_html_addd8e0c7fbc69b9ba791d80659539731"><div class="ttname"><a href="class_correction.html#addd8e0c7fbc69b9ba791d80659539731">Correction::createImage</a></div><div class="ttdeci">void createImage()</div><div class="ttdoc">createImage создает cv::Mat из this->path для обработки </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00013">Correction.cpp:13</a></div></div>
+<div class="ttc" id="class_correction_html_ab414b82542d44827c55fd3e04e6696f7"><div class="ttname"><a href="class_correction.html#ab414b82542d44827c55fd3e04e6696f7">Correction::bright</a></div><div class="ttdeci">int bright(cv::Mat &amp;image)</div><div class="ttdoc">isDim Определяет является ли изображение тусклым, ярким или оптимальным (не тускло не ярко) ...</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00112">Correction.cpp:112</a></div></div>
+<div class="ttc" id="class_correction_html_a8f6f95589a0bb8df6815832155947390"><div class="ttname"><a href="class_correction.html#a8f6f95589a0bb8df6815832155947390">Correction::isWhite</a></div><div class="ttdeci">bool isWhite(const cv::Vec3b &amp;pixel)</div><div class="ttdoc">isWhite Определяет является ли пиксель оттенком белого </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00025">Correction.cpp:25</a></div></div>
+<div class="ttc" id="class_correction_html_a5e8896ab6365772cbeb7f844edd3402d"><div class="ttname"><a href="class_correction.html#a5e8896ab6365772cbeb7f844edd3402d">Correction::increaseSizeIn</a></div><div class="ttdeci">void increaseSizeIn(cv::Mat &amp;image, int multiplier)</div><div class="ttdoc">increaseSizeIn Увеличивает изображение в multiplier раз, сохраняя пропорции </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00079">Correction.cpp:79</a></div></div>
+<div class="ttc" id="class_correction_html_a6e1ccea5c33ea89d717d9227d17f625c"><div class="ttname"><a href="class_correction.html#a6e1ccea5c33ea89d717d9227d17f625c">Correction::path</a></div><div class="ttdeci">string path</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8h_source.html#l00146">Correction.h:146</a></div></div>
+<div class="ttc" id="class_correction_html_a80784bcdd2ac906f3c06713540cc5a0c"><div class="ttname"><a href="class_correction.html#a80784bcdd2ac906f3c06713540cc5a0c">Correction::normalizeBright</a></div><div class="ttdeci">void normalizeBright(cv::Mat &amp;image)</div><div class="ttdoc">normalizeBright нормализует параметр яркости изображения - делает ярче или тусклее ...</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00132">Correction.cpp:132</a></div></div>
+<div class="ttc" id="class_correction_html_adfc060f705da270932f1a8adec8ce567"><div class="ttname"><a href="class_correction.html#adfc060f705da270932f1a8adec8ce567">Correction::increaseContrast</a></div><div class="ttdeci">void increaseContrast(cv::Mat &amp;image, double alpha)</div><div class="ttdoc">increaseContrast увеличивает контраст изображения </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00084">Correction.cpp:84</a></div></div>
+<div class="ttc" id="class_correction_html_ae9b87cadf876be9832d886fb44d913f2"><div class="ttname"><a href="class_correction.html#ae9b87cadf876be9832d886fb44d913f2">Correction::increaseClarity</a></div><div class="ttdeci">void increaseClarity(cv::Mat &amp;image)</div><div class="ttdoc">increaseClarity увеличивает четкочть изображения </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00103">Correction.cpp:103</a></div></div>
+<div class="ttc" id="class_correction_html_a1d3860fc36bdf0cb385de6061f87a6b8"><div class="ttname"><a href="class_correction.html#a1d3860fc36bdf0cb385de6061f87a6b8">Correction::isRed</a></div><div class="ttdeci">bool isRed(const cv::Vec3b &amp;pixel)</div><div class="ttdoc">isRed Определяет является ли пиксель оттенком красного </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00044">Correction.cpp:44</a></div></div>
+<div class="ttc" id="class_correction_html_ac0ebbb080cf4ec47f02f3ac8d61f67df"><div class="ttname"><a href="class_correction.html#ac0ebbb080cf4ec47f02f3ac8d61f67df">Correction::isYellow</a></div><div class="ttdeci">bool isYellow(const cv::Vec3b &amp;pixel)</div><div class="ttdoc">isYellow определит является ли пиксель оттенком желтого </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00064">Correction.cpp:64</a></div></div>
+<div class="ttc" id="class_correction_html_a9ed7e4258c66b154f585f71815fd477b"><div class="ttname"><a href="class_correction.html#a9ed7e4258c66b154f585f71815fd477b">Correction::showImage</a></div><div class="ttdeci">void showImage(std::string name, cv::Mat &amp;image)</div><div class="ttdoc">showImage Выводит изображение на экран и ожидает нажатия любой клавиши для закрытия ...</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00018">Correction.cpp:18</a></div></div>
+<div class="ttc" id="class_correction_html_a2a43e98d77beaf6fee39a6fe1bbfbb26"><div class="ttname"><a href="class_correction.html#a2a43e98d77beaf6fee39a6fe1bbfbb26">Correction::makeCorrection</a></div><div class="ttdeci">vector&lt; cv::Mat &gt; * makeCorrection(string path)</div><div class="ttdoc">makeCorrection Корректирует изображение </div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00213">Correction.cpp:213</a></div></div>
+<div class="ttc" id="class_correction_html_a24fe63583741bbe777222015483d888a"><div class="ttname"><a href="class_correction.html#a24fe63583741bbe777222015483d888a">Correction::findRYW</a></div><div class="ttdeci">vector&lt; cv::Mat &gt; &amp; findRYW(const cv::Mat &amp;image)</div><div class="ttdoc">findRYW Сделает красный, желтый и белый цвета абсолютными: белый (255,255,255) красный (0...</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00156">Correction.cpp:156</a></div></div>
+<div class="ttc" id="class_correction_html_ad13cd5cc763e4cfced5595b1bb69e8dc"><div class="ttname"><a href="class_correction.html#ad13cd5cc763e4cfced5595b1bb69e8dc">Correction::~Correction</a></div><div class="ttdeci">~Correction()</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00008">Correction.cpp:8</a></div></div>
+<div class="ttc" id="class_correction_html_a02fff781df4df45a3bb6f0a2484cafcc"><div class="ttname"><a href="class_correction.html#a02fff781df4df45a3bb6f0a2484cafcc">Correction::correctionResult</a></div><div class="ttdeci">vector&lt; cv::Mat &gt; * correctionResult</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8h_source.html#l00148">Correction.h:148</a></div></div>
+<div class="ttc" id="class_correction_html"><div class="ttname"><a href="class_correction.html">Correction</a></div><div class="ttdoc">The Correction class Анализирует поступившее изображение и корректирует его для дальнейшего распохнов...</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8h_source.html#l00011">Correction.h:11</a></div></div>
+<div class="ttc" id="_tools_8h_html"><div class="ttname"><a href="_tools_8h.html">Tools.h</a></div></div>
+<div class="ttc" id="class_correction_html_ab2b5a19788aa1940ca828c450a5f5d4f"><div class="ttname"><a href="class_correction.html#ab2b5a19788aa1940ca828c450a5f5d4f">Correction::Correction</a></div><div class="ttdeci">Correction()</div><div class="ttdef"><b>Definition:</b> <a href="_correction_8cpp_source.html#l00003">Correction.cpp:3</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="_correction_8h.html">Correction.h</a></li>
+    <li class="footer">Документация по Распознование знаков. Последние изменения: Вс 10 Янв 2016 20:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
+  </ul>
+</div>
+</body>
+</html>

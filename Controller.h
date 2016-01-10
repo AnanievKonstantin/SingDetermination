@@ -6,6 +6,10 @@
 #include <SearchOutlines.h>
 #include <ContourAnalis.h>
 
+/**
+ * @brief The Controller class
+ *  Контролиоует процесс выволнения программы. Организует основной цикл программы.
+ */
 class Controller
 {
 public:
