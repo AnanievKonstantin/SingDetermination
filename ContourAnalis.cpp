@@ -75,6 +75,7 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
      * Вычисляется площадь по S = 1/2 * (AC*BD)
      * Вычисляется delta = cv::contourArea(contour)/ S
      * Если delta не ревышает заданного значения то распознаётся как ромб
+     *
      */
 
     cv::Point D(0,0);
@@ -104,10 +105,10 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
             A.x = point.x; A.y = point.y;
         }
     }
-//    cout << "\t\tmaxX element : " << D<< "\n";
-//    cout << "\t\tminY element : " << A<< "\n";
-//    cout << "\t\tminX element : " << B<< "\n";
-//    cout << "\t\tmaxY element : " << C<< "\n";
+//    cout << "\t\tD element : " << D<< "\n";
+//    cout << "\t\tA element : " << A<< "\n";
+//    cout << "\t\tB element : " << B<< "\n";
+//    cout << "\t\tC element : " << C<< "\n";
 
     double areaOfContour = cv::contourArea(contour);
 //    cout<<"\t\tareaOfContour" << areaOfContour <<endl;
@@ -133,6 +134,11 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
 //    cout <<"AC " << AC <<endl;
 //    cout <<"BD " << BD <<endl;
 
+    if(A.y >= (B.y - AC/8) || A.y >= (C.y - AC/8))
+    {
+        return false;
+    }
+
     double areaOfPoints = (0.5) * (AC*BD);
 
 //    cout << "areaOfContour "<< areaOfContour <<endl;
@@ -145,6 +151,8 @@ bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &
     {
         return false;
     }
+
+
     return true;
 }
 
@@ -192,7 +200,6 @@ bool ContourAnalis::triagleDetection(cv::Mat &imageWithContour, vector<cv::Point
         {
             A.x = point.x; A.y = point.y;
         }
-
     }
 
     int AB = (int)distance(B, A);
@@ -271,19 +278,49 @@ double ContourAnalis::distance(cv::Point a, cv::Point b)
     return d;
 }
 
+void ContourAnalis::CalcProbabilityDetection(double toRect, double toCircle, double toTriagle)
+{
+    double isRect = toRect/36;
+    double isCircle = toCircle/36;
+    double isTriagle = toTriagle/36;
+
+    if(isCircle > isRect && isCircle > isTriagle)
+    {
+        cout << " O " << isCircle <<endl;
+        return;
+    }
+
+    if(isRect > isTriagle && isRect > isCircle)
+    {
+        cout << " R " << isRect <<endl;
+        return;
+    }
+
+    if(isTriagle > isRect && isTriagle > isCircle)
+    {
+        cout << " D " << isTriagle<<endl;
+        return;
+    }
+
+    cout << " N " <<endl;
+    return;
+
+
+}
+
 ContourAnalis::ContourAnalis()
 {
 }
 
-int ContourAnalis::makeAnalis(list<Storrage *> *contours)
+void ContourAnalis::makeAnalis(list<Storrage *> *contours)
 {
     //cout << "In ANALIS" <<endl;
     int i = 0;
     int imageNumber = 0;
 
-    int isRomb = 0;
-    int isCircle = 0;
-    int isTriagle = 0;
+    double isRomb = 0;
+    double isCircle = 0;
+    double isTriagle = 0;
 
     for(Storrage * stor: *contours)
     {
@@ -319,9 +356,11 @@ int ContourAnalis::makeAnalis(list<Storrage *> *contours)
         i = 0;
     }
 
-    cout << "Это круг на: "<<isCircle<<endl;
-    cout << "Это ромб на: "<<isRomb<<endl;
-    cout << "Это триугольник на: "<<isTriagle<<endl;
-    cv::waitKey();
-    cv::destroyAllWindows();
+//    cout << "Это круг на: "<<isCircle<<endl;
+//    cout << "Это ромб на: "<<isRomb<<endl;
+//    cout << "Это триугольник на: "<<isTriagle<<endl;
+
+    CalcProbabilityDetection(isRomb, isCircle, isTriagle);
+    //cv::waitKey();
+    //cv::destroyAllWindows();
 }

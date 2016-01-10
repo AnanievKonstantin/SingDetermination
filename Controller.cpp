@@ -2,7 +2,7 @@
 
 Controller::Controller(int argc, char *argv[])
 {
-    string path = "/home/takava/Documents/Study/Works/individual/";
+    string path = argv[1];
     DIR * folder = opendir(path.c_str());
 
     if(folder != NULL)
@@ -25,7 +25,8 @@ Controller::Controller(int argc, char *argv[])
 
                     cout << countFiles <<") Processing for: ";
                     countFiles ++;
-                    cout << path << entry->d_name <<endl;
+//                    cout << path << entry->d_name <<endl;
+                    cout << entry->d_name <<": ";
                     const vector<cv::Mat> * correctedImage = corrector.makeCorrection(path + entry->d_name);
                     list<Storrage*> * contours = searcher.search(correctedImage);
 
@@ -42,7 +43,7 @@ Controller::Controller(int argc, char *argv[])
              }
              catch(const std::exception &e)
              {
-                cout << "Expextion" <<endl;
+                cout << "Expextion" <<e.what()<<endl;
              }
 
         }

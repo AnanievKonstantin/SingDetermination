@@ -62,13 +62,24 @@ private:
      * @param b
      * @return
      *  расстояние d= sqrt((x2−x1)^2+(y2−y1)^2)
-
      */
     double distance(cv::Point a, cv::Point b);
 
+    /**
+     * @brief CalcProbabilityDetection
+     *  Производит расчет верояности определения знаков
+     * @param toRect
+     *  Число обнаружений контура ромб
+     * @param toCircle
+     *  Число обнаружений контура круг
+     * @param toTriagle
+     *  Число обнаружений контура триугольник
+     */
+    void CalcProbabilityDetection(double toRect, double toCircle, double toTriagle);
+
 public:
     ContourAnalis();
-    int makeAnalis(list<Storrage*> * contours);
+    void makeAnalis(list<Storrage*> * contours);
 };
 
 #endif // CONTOURANALIS_H
