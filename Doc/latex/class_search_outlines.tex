@@ -1,4 +1,4 @@
-\hypertarget{class_search_outlines}{\section{Класс Search\+Outlines}
+\hypertarget{class_search_outlines}{\section{Search\+Outlines Class Reference}
 \label{class_search_outlines}\index{Search\+Outlines@{Search\+Outlines}}
 }
 
@@ -10,7 +10,7 @@ The \hyperlink{class_search_outlines}{Search\+Outlines} class Производи
 
 {\ttfamily \#include $<$Search\+Outlines.\+h$>$}
 
-\subsection*{Открытые члены}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_search_outlines_a3c7f09def73a9521a0735d8e90a79a94}{Search\+Outlines} ()
@@ -19,7 +19,7 @@ The \hyperlink{class_search_outlines}{Search\+Outlines} class Производи
 \item 
 list$<$ \hyperlink{class_storrage}{Storrage} $\ast$ $>$ $\ast$ \hyperlink{class_search_outlines_af38a752797a850533995230928187e32}{search} (const vector$<$ cv\+::\+Mat $>$ $\ast$corrected\+Pictures)
 \begin{DoxyCompactList}\small\item\em search Производит поиск контуров по\+: Серым, бинарным и H\+S\+V версиям corrected\+Pictures \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Закрытые члены}
+\subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_search_outlines_abbd427cb74410f5919d779af6041f3b6}{show\+Pictures} (string name, const vector$<$ cv\+::\+Mat $>$ $\ast$const pictures)
@@ -38,7 +38,7 @@ void \hyperlink{class_search_outlines_a09da9c6586707297e2012403a497c6be}{make\+N
 \begin{DoxyCompactList}\small\item\em make\+Normalisation Редактирует список контуров \end{DoxyCompactList}\item 
 void \hyperlink{class_search_outlines_ae2be53580b1029487fb5e5e2ab6c49a3}{remove\+Short\+Contours} ()
 \begin{DoxyCompactList}\small\item\em remove\+Short\+Contours Удаляет короткие контуры \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Закрытые данные}
+\subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 vector$<$ cv\+::\+Mat $>$ $\ast$ \hyperlink{class_search_outlines_a2284f3f55022613e11f2d023a6b76e07}{gray\+Scale\+Images} = nullptr
@@ -55,14 +55,14 @@ list$<$ \hyperlink{class_storrage}{Storrage} $\ast$ $>$ $\ast$ \hyperlink{class_
 \end{DoxyCompactItemize}
 
 
-\subsection{Подробное описание}
+\subsection{Detailed Description}
 The \hyperlink{class_search_outlines}{Search\+Outlines} class Производит поиск контуров и их нормализацию 
 
-См. определение в файле Search\+Outlines.\+h строка 12
+Definition at line 12 of file Search\+Outlines.\+h.
 
 
 
-\subsection{Конструктор(ы)}
+\subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_search_outlines_a3c7f09def73a9521a0735d8e90a79a94}{\index{Search\+Outlines@{Search\+Outlines}!Search\+Outlines@{Search\+Outlines}}
 \index{Search\+Outlines@{Search\+Outlines}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{Search\+Outlines}]{\setlength{\rightskip}{0pt plus 5cm}Search\+Outlines\+::\+Search\+Outlines (
@@ -72,7 +72,7 @@ The \hyperlink{class_search_outlines}{Search\+Outlines} class Производи
 )}}\label{class_search_outlines_a3c7f09def73a9521a0735d8e90a79a94}
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 3
+Definition at line 3 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -89,7 +89,7 @@ The \hyperlink{class_search_outlines}{Search\+Outlines} class Производи
 )}}\label{class_search_outlines_ac75a5dc3628e9970b538b9636bec3599}
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 8
+Definition at line 8 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -98,7 +98,7 @@ The \hyperlink{class_search_outlines}{Search\+Outlines} class Производи
 \end{DoxyCode}
 
 
-\subsection{Методы}
+\subsection{Member Function Documentation}
 \hypertarget{class_search_outlines_ac7706a914bd5abb1d2f21ecf13192461}{\index{Search\+Outlines@{Search\+Outlines}!create\+Bin@{create\+Bin}}
 \index{create\+Bin@{create\+Bin}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{create\+Bin}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cv\+::\+Mat $>$ $\ast$ Search\+Outlines\+::create\+Bin (
@@ -110,12 +110,12 @@ The \hyperlink{class_search_outlines}{Search\+Outlines} class Производи
 
 create\+Bin создаёт бинарную версию изобажений 
 
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 массив бинарных изображений 
 \end{DoxyReturn}
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 77
+Definition at line 77 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -153,16 +153,16 @@ create\+Bin создаёт бинарную версию изобажений
 create\+H\+S\+V\+Channels\+From Создаёт каналы H S V из поступившено изображения 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & 3 канальное избражение B\+G\+R \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 массив каналов vector\mbox{[}0\mbox{]} H vector\mbox{[}1\mbox{]} S vector\mbox{[}2\mbox{]} V 
 \end{DoxyReturn}
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 100
+Definition at line 100 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -191,12 +191,12 @@ create\+H\+S\+V\+Channels\+From Создаёт каналы H S V из пост�
 
 create\+Gray\+Scale создаёт gray версию изображений 
 
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 63
+Definition at line 63 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -226,7 +226,7 @@ draw\+Contours Рисует контуры найденные на изобра�
 
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 135
+Definition at line 135 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -269,7 +269,7 @@ draw\+Contours Рисует контуры найденные на изобра�
 
 find\+Contours Нахлжит контуры и их иерархию в\+: 
 
-\begin{DoxySeeAlso}{См. также}
+\begin{DoxySeeAlso}{See also}
 \hyperlink{class_search_outlines_a2284f3f55022613e11f2d023a6b76e07}{gray\+Scale\+Images} 
 
 \hyperlink{class_search_outlines_ad32573709b7db29f00e5444110b37d23}{binary\+Images} 
@@ -282,7 +282,7 @@ find\+Contours Нахлжит контуры и их иерархию в\+:
 \end{DoxySeeAlso}
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 115
+Definition at line 115 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -318,7 +318,7 @@ make\+Normalisation Редактирует список контуров
 
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 161
+Definition at line 161 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -339,7 +339,7 @@ remove\+Short\+Contours Удаляет короткие контуры
 
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 166
+Definition at line 166 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -384,16 +384,16 @@ remove\+Short\+Contours Удаляет короткие контуры
 search Производит поиск контуров по\+: Серым, бинарным и H\+S\+V версиям corrected\+Pictures 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em corrected\+Pictures} & нормализованные изображения \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Все контуры изображения 
 \end{DoxyReturn}
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 12
+Definition at line 12 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -454,7 +454,7 @@ show\+Pictures Выводит на экран массив изображени�
 
 
 
-См. определение в файле Search\+Outlines.\+cpp строка 53
+Definition at line 53 of file Search\+Outlines.\+cpp.
 
 
 \begin{DoxyCode}
@@ -469,52 +469,52 @@ show\+Pictures Выводит на экран массив изображени�
 \end{DoxyCode}
 
 
-\subsection{Данные класса}
+\subsection{Member Data Documentation}
 \hypertarget{class_search_outlines_ad32573709b7db29f00e5444110b37d23}{\index{Search\+Outlines@{Search\+Outlines}!binary\+Images@{binary\+Images}}
 \index{binary\+Images@{binary\+Images}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{binary\+Images}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Mat$>$$\ast$ Search\+Outlines\+::binary\+Images = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_search_outlines_ad32573709b7db29f00e5444110b37d23}
 
 
-См. определение в файле Search\+Outlines.\+h строка 98
+Definition at line 98 of file Search\+Outlines.\+h.
 
 \hypertarget{class_search_outlines_a2284f3f55022613e11f2d023a6b76e07}{\index{Search\+Outlines@{Search\+Outlines}!gray\+Scale\+Images@{gray\+Scale\+Images}}
 \index{gray\+Scale\+Images@{gray\+Scale\+Images}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{gray\+Scale\+Images}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Mat$>$$\ast$ Search\+Outlines\+::gray\+Scale\+Images = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_search_outlines_a2284f3f55022613e11f2d023a6b76e07}
 
 
-См. определение в файле Search\+Outlines.\+h строка 97
+Definition at line 97 of file Search\+Outlines.\+h.
 
 \hypertarget{class_search_outlines_a1eb23566d056c92a441067d8c9cd03ae}{\index{Search\+Outlines@{Search\+Outlines}!hsv\+Bin\+Channels\+From\+Bright@{hsv\+Bin\+Channels\+From\+Bright}}
 \index{hsv\+Bin\+Channels\+From\+Bright@{hsv\+Bin\+Channels\+From\+Bright}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{hsv\+Bin\+Channels\+From\+Bright}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Mat$>$$\ast$ Search\+Outlines\+::hsv\+Bin\+Channels\+From\+Bright = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_search_outlines_a1eb23566d056c92a441067d8c9cd03ae}
 
 
-См. определение в файле Search\+Outlines.\+h строка 100
+Definition at line 100 of file Search\+Outlines.\+h.
 
 \hypertarget{class_search_outlines_a236b9910b73900271297548d3744d506}{\index{Search\+Outlines@{Search\+Outlines}!hsv\+Bin\+Channels\+From\+Contrast@{hsv\+Bin\+Channels\+From\+Contrast}}
 \index{hsv\+Bin\+Channels\+From\+Contrast@{hsv\+Bin\+Channels\+From\+Contrast}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{hsv\+Bin\+Channels\+From\+Contrast}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Mat$>$$\ast$ Search\+Outlines\+::hsv\+Bin\+Channels\+From\+Contrast = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_search_outlines_a236b9910b73900271297548d3744d506}
 
 
-См. определение в файле Search\+Outlines.\+h строка 101
+Definition at line 101 of file Search\+Outlines.\+h.
 
 \hypertarget{class_search_outlines_a455efed931c502f14dbf88c87974214d}{\index{Search\+Outlines@{Search\+Outlines}!hsv\+Bin\+Channels\+From\+Source@{hsv\+Bin\+Channels\+From\+Source}}
 \index{hsv\+Bin\+Channels\+From\+Source@{hsv\+Bin\+Channels\+From\+Source}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{hsv\+Bin\+Channels\+From\+Source}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Mat$>$$\ast$ Search\+Outlines\+::hsv\+Bin\+Channels\+From\+Source = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_search_outlines_a455efed931c502f14dbf88c87974214d}
 
 
-См. определение в файле Search\+Outlines.\+h строка 99
+Definition at line 99 of file Search\+Outlines.\+h.
 
 \hypertarget{class_search_outlines_a1b1d7e6dd5c6c2b30c397f9f6d712dd1}{\index{Search\+Outlines@{Search\+Outlines}!info\+Contours@{info\+Contours}}
 \index{info\+Contours@{info\+Contours}!Search\+Outlines@{Search\+Outlines}}
 \subsubsection[{info\+Contours}]{\setlength{\rightskip}{0pt plus 5cm}list$<${\bf Storrage} $\ast$ $>$$\ast$ Search\+Outlines\+::info\+Contours = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_search_outlines_a1b1d7e6dd5c6c2b30c397f9f6d712dd1}
 
 
-См. определение в файле Search\+Outlines.\+h строка 103
+Definition at line 103 of file Search\+Outlines.\+h.
 
 
 
-Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{_search_outlines_8h}{Search\+Outlines.\+h}\item 
-\hyperlink{_search_outlines_8cpp}{Search\+Outlines.\+cpp}\end{DoxyCompactItemize}
+/home/takava/\+Qt\+Creator\+Projects/\+Sign\+Determination/\hyperlink{_search_outlines_8h}{Search\+Outlines.\+h}\item 
+/home/takava/\+Qt\+Creator\+Projects/\+Sign\+Determination/\hyperlink{_search_outlines_8cpp}{Search\+Outlines.\+cpp}\end{DoxyCompactItemize}

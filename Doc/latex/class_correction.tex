@@ -1,4 +1,4 @@
-\hypertarget{class_correction}{\section{Класс Correction}
+\hypertarget{class_correction}{\section{Correction Class Reference}
 \label{class_correction}\index{Correction@{Correction}}
 }
 
@@ -10,7 +10,7 @@ The \hyperlink{class_correction}{Correction} class Анализирует пос
 
 {\ttfamily \#include $<$Correction.\+h$>$}
 
-\subsection*{Открытые члены}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_correction_ab2b5a19788aa1940ca828c450a5f5d4f}{Correction} ()
@@ -19,7 +19,7 @@ The \hyperlink{class_correction}{Correction} class Анализирует пос
 \item 
 vector$<$ cv\+::\+Mat $>$ $\ast$ \hyperlink{class_correction_a2a43e98d77beaf6fee39a6fe1bbfbb26}{make\+Correction} (string \hyperlink{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{path})
 \begin{DoxyCompactList}\small\item\em make\+Correction Корректирует изображение \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Закрытые члены}
+\subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_correction_addd8e0c7fbc69b9ba791d80659539731}{create\+Image} ()
@@ -44,7 +44,7 @@ void \hyperlink{class_correction_a80784bcdd2ac906f3c06713540cc5a0c}{normalize\+B
 \begin{DoxyCompactList}\small\item\em normalize\+Bright нормализует параметр яркости изображения -\/ делает ярче или тусклее \end{DoxyCompactList}\item 
 vector$<$ cv\+::\+Mat $>$ \& \hyperlink{class_correction_a24fe63583741bbe777222015483d888a}{find\+R\+Y\+W} (const cv\+::\+Mat \&image)
 \begin{DoxyCompactList}\small\item\em find\+R\+Y\+W Сделает красный, желтый и белый цвета абсолютными\+: белый (255,255,255) красный (0,0,255) желтый (0,255,255) \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Закрытые данные}
+\subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 string \hyperlink{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{path}
@@ -55,14 +55,14 @@ vector$<$ cv\+::\+Mat $>$ $\ast$ \hyperlink{class_correction_a02fff781df4df45a3b
 \end{DoxyCompactItemize}
 
 
-\subsection{Подробное описание}
+\subsection{Detailed Description}
 The \hyperlink{class_correction}{Correction} class Анализирует поступившее изображение и корректирует его для дальнейшего распохнования Увеличивает размер, нормализует цвета, увеличивает-\/уменьшает яркость, четкость и контраст, выделяет желтый, красный, белый. 
 
-См. определение в файле Correction.\+h строка 11
+Definition at line 11 of file Correction.\+h.
 
 
 
-\subsection{Конструктор(ы)}
+\subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_correction_ab2b5a19788aa1940ca828c450a5f5d4f}{\index{Correction@{Correction}!Correction@{Correction}}
 \index{Correction@{Correction}!Correction@{Correction}}
 \subsubsection[{Correction}]{\setlength{\rightskip}{0pt plus 5cm}Correction\+::\+Correction (
@@ -72,7 +72,7 @@ The \hyperlink{class_correction}{Correction} class Анализирует пос
 )}}\label{class_correction_ab2b5a19788aa1940ca828c450a5f5d4f}
 
 
-См. определение в файле Correction.\+cpp строка 3
+Definition at line 3 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -89,7 +89,7 @@ The \hyperlink{class_correction}{Correction} class Анализирует пос
 )}}\label{class_correction_ad13cd5cc763e4cfced5595b1bb69e8dc}
 
 
-См. определение в файле Correction.\+cpp строка 8
+Definition at line 8 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -99,7 +99,7 @@ The \hyperlink{class_correction}{Correction} class Анализирует пос
 \end{DoxyCode}
 
 
-\subsection{Методы}
+\subsection{Member Function Documentation}
 \hypertarget{class_correction_ab414b82542d44827c55fd3e04e6696f7}{\index{Correction@{Correction}!bright@{bright}}
 \index{bright@{bright}!Correction@{Correction}}
 \subsubsection[{bright}]{\setlength{\rightskip}{0pt plus 5cm}int Correction\+::bright (
@@ -112,16 +112,16 @@ The \hyperlink{class_correction}{Correction} class Анализирует пос
 is\+Dim Определяет является ли изображение тусклым, ярким или оптимальным (не тускло не ярко) 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & Изображение в H\+S\+V \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 1 если среднее Value изображения $<$= 85 2 если среднее Value изображения $>$= 170 3 если среднее Value изображения принадлежит (85, 170) 
 \end{DoxyReturn}
 
 
-См. определение в файле Correction.\+cpp строка 112
+Definition at line 112 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -157,7 +157,7 @@ create\+Image создает cv\+::\+Mat из this-\/$>$path для обрабо
 
 
 
-См. определение в файле Correction.\+cpp строка 13
+Definition at line 13 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -177,16 +177,16 @@ create\+Image создает cv\+::\+Mat из this-\/$>$path для обрабо
 find\+R\+Y\+W Сделает красный, желтый и белый цвета абсолютными\+: белый (255,255,255) красный (0,0,255) желтый (0,255,255) 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & изображение в B\+G\+R \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 vector \mbox{[}red,yellow, white\mbox{]} 
 \end{DoxyReturn}
 
 
-См. определение в файле Correction.\+cpp строка 156
+Definition at line 156 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -258,13 +258,13 @@ vector \mbox{[}red,yellow, white\mbox{]}
 increase\+Clarity увеличивает четкочть изображения 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & изображение для увеличения четкости \\
 \hline
 \end{DoxyParams}
 
 
-См. определение в файле Correction.\+cpp строка 103
+Definition at line 103 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -289,7 +289,7 @@ increase\+Clarity увеличивает четкочть изображения
 increase\+Contrast увеличивает контраст изображения 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & Изображение для контрастирования в B\+G\+R \\
 \hline
 {\em alpha} & коэффициент увеличения alpha in \mbox{[}1.\+0, 3.\+0\mbox{]} \\
@@ -297,7 +297,7 @@ increase\+Contrast увеличивает контраст изображени�
 \end{DoxyParams}
 
 
-См. определение в файле Correction.\+cpp строка 84
+Definition at line 84 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -333,7 +333,7 @@ increase\+Contrast увеличивает контраст изображени�
 increase\+Size\+In Увеличивает изображение в multiplier раз, сохраняя пропорции 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & Картинка для увеличения \\
 \hline
 {\em multiplier} & множитель\+: new size = image.\+size() $\ast$ multiplier;  \\
@@ -341,7 +341,7 @@ increase\+Size\+In Увеличивает изображение в multiplier �
 \end{DoxyParams}
 
 
-См. определение в файле Correction.\+cpp строка 79
+Definition at line 79 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -361,16 +361,16 @@ increase\+Size\+In Увеличивает изображение в multiplier �
 is\+Red Определяет является ли пиксель оттенком красного 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em pixel} & пиксель в B\+G\+R \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true если является, else false 
 \end{DoxyReturn}
 
 
-См. определение в файле Correction.\+cpp строка 44
+Definition at line 44 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -405,16 +405,16 @@ true если является, else false
 is\+White Определяет является ли пиксель оттенком белого 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em pixel} & пиксель в B\+G\+R \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true если является, else false 
 \end{DoxyReturn}
 
 
-См. определение в файле Correction.\+cpp строка 25
+Definition at line 25 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -448,16 +448,16 @@ true если является, else false
 is\+Yellow определит является ли пиксель оттенком желтого 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em pixel} & пиксель в B\+G\+R \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true если является, else false 
 \end{DoxyReturn}
 
 
-См. определение в файле Correction.\+cpp строка 64
+Definition at line 64 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -487,16 +487,16 @@ true если является, else false
 make\+Correction Корректирует изображение 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em path} & Путь к избражению \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 массив скорректированных изображений vector\mbox{[}0\mbox{]} -\/ исходное vector\mbox{[}1\mbox{]} -\/ яркое vector\mbox{[}2\mbox{]} -\/ контрасное vector\mbox{[}3\mbox{]} -\/ с выделенным красным vector\mbox{[}4\mbox{]} -\/ с выделенным жёлтым vector\mbox{[}5\mbox{]} -\/ с выделенным белым 
 \end{DoxyReturn}
 
 
-См. определение в файле Correction.\+cpp строка 213
+Definition at line 213 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -568,13 +568,13 @@ make\+Correction Корректирует изображение
 normalize\+Bright нормализует параметр яркости изображения -\/ делает ярче или тусклее 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & Изображение в H\+S\+V \\
 \hline
 \end{DoxyParams}
 
 
-См. определение в файле Correction.\+cpp строка 132
+Definition at line 132 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -614,7 +614,7 @@ normalize\+Bright нормализует параметр яркости изо�
 show\+Image Выводит изображение на экран и ожидает нажатия любой клавиши для закрытия 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image} & картинка для вывода \\
 \hline
 {\em name} & заголовок окна  \\
@@ -622,7 +622,7 @@ show\+Image Выводит изображение на экран и ожида�
 \end{DoxyParams}
 
 
-См. определение в файле Correction.\+cpp строка 18
+Definition at line 18 of file Correction.\+cpp.
 
 
 \begin{DoxyCode}
@@ -634,31 +634,31 @@ show\+Image Выводит изображение на экран и ожида�
 \end{DoxyCode}
 
 
-\subsection{Данные класса}
+\subsection{Member Data Documentation}
 \hypertarget{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}{\index{Correction@{Correction}!correction\+Result@{correction\+Result}}
 \index{correction\+Result@{correction\+Result}!Correction@{Correction}}
 \subsubsection[{correction\+Result}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cv\+::\+Mat$>$$\ast$ Correction\+::correction\+Result = nullptr\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a02fff781df4df45a3bb6f0a2484cafcc}
 
 
-См. определение в файле Correction.\+h строка 148
+Definition at line 148 of file Correction.\+h.
 
 \hypertarget{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}{\index{Correction@{Correction}!path@{path}}
 \index{path@{path}!Correction@{Correction}}
 \subsubsection[{path}]{\setlength{\rightskip}{0pt plus 5cm}string Correction\+::path\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a6e1ccea5c33ea89d717d9227d17f625c}
 
 
-См. определение в файле Correction.\+h строка 146
+Definition at line 146 of file Correction.\+h.
 
 \hypertarget{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}{\index{Correction@{Correction}!source\+Image@{source\+Image}}
 \index{source\+Image@{source\+Image}!Correction@{Correction}}
 \subsubsection[{source\+Image}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Correction\+::source\+Image\hspace{0.3cm}{\ttfamily [private]}}}\label{class_correction_a1344ad4fb7d6a6346c2524e06feddd4b}
 
 
-См. определение в файле Correction.\+h строка 147
+Definition at line 147 of file Correction.\+h.
 
 
 
-Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{_correction_8h}{Correction.\+h}\item 
-\hyperlink{_correction_8cpp}{Correction.\+cpp}\end{DoxyCompactItemize}
+/home/takava/\+Qt\+Creator\+Projects/\+Sign\+Determination/\hyperlink{_correction_8h}{Correction.\+h}\item 
+/home/takava/\+Qt\+Creator\+Projects/\+Sign\+Determination/\hyperlink{_correction_8cpp}{Correction.\+cpp}\end{DoxyCompactItemize}

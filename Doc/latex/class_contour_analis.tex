@@ -1,4 +1,4 @@
-\hypertarget{class_contour_analis}{\section{Класс Contour\+Analis}
+\hypertarget{class_contour_analis}{\section{Contour\+Analis Class Reference}
 \label{class_contour_analis}\index{Contour\+Analis@{Contour\+Analis}}
 }
 
@@ -10,14 +10,14 @@ The \hyperlink{class_contour_analis}{Contour\+Analis} class Производит
 
 {\ttfamily \#include $<$Contour\+Analis.\+h$>$}
 
-\subsection*{Открытые члены}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_contour_analis_afb230c8f15afd848b467916f16c1681a}{Contour\+Analis} ()
 \item 
 void \hyperlink{class_contour_analis_a8c398a82aced99e9e44b378743652a90}{make\+Analis} (list$<$ \hyperlink{class_storrage}{Storrage} $\ast$ $>$ $\ast$contours)
 \begin{DoxyCompactList}\small\item\em make\+Analis Производит анализ контуров и выводит результат распознования в консоль \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Закрытые члены}
+\subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 cv\+::\+Mat \hyperlink{class_contour_analis_a8dfbcc0a15123202d1af035f7206d87c}{draw\+Contour} (const vector$<$ cv\+::\+Point $>$ \&contour)
@@ -34,14 +34,14 @@ void \hyperlink{class_contour_analis_a1a8b2ccb473a901f51cc21339c16c3ea}{Calc\+Pr
 \begin{DoxyCompactList}\small\item\em Calc\+Probability\+Detection Производит расчет верояности определения знаков исходя из количества найденных контуров для которых функции triagle\+Detection, romb\+Detection, circle\+Detected вернули true;. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Подробное описание}
+\subsection{Detailed Description}
 The \hyperlink{class_contour_analis}{Contour\+Analis} class Производит анализ контуров 
 
-См. определение в файле Contour\+Analis.\+h строка 11
+Definition at line 11 of file Contour\+Analis.\+h.
 
 
 
-\subsection{Конструктор(ы)}
+\subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_contour_analis_afb230c8f15afd848b467916f16c1681a}{\index{Contour\+Analis@{Contour\+Analis}!Contour\+Analis@{Contour\+Analis}}
 \index{Contour\+Analis@{Contour\+Analis}!Contour\+Analis@{Contour\+Analis}}
 \subsubsection[{Contour\+Analis}]{\setlength{\rightskip}{0pt plus 5cm}Contour\+Analis\+::\+Contour\+Analis (
@@ -51,7 +51,7 @@ The \hyperlink{class_contour_analis}{Contour\+Analis} class Производит
 )}}\label{class_contour_analis_afb230c8f15afd848b467916f16c1681a}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 318
+Definition at line 318 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -60,7 +60,7 @@ The \hyperlink{class_contour_analis}{Contour\+Analis} class Производит
 \end{DoxyCode}
 
 
-\subsection{Методы}
+\subsection{Member Function Documentation}
 \hypertarget{class_contour_analis_a1a8b2ccb473a901f51cc21339c16c3ea}{\index{Contour\+Analis@{Contour\+Analis}!Calc\+Probability\+Detection@{Calc\+Probability\+Detection}}
 \index{Calc\+Probability\+Detection@{Calc\+Probability\+Detection}!Contour\+Analis@{Contour\+Analis}}
 \subsubsection[{Calc\+Probability\+Detection}]{\setlength{\rightskip}{0pt plus 5cm}void Contour\+Analis\+::\+Calc\+Probability\+Detection (
@@ -75,7 +75,7 @@ The \hyperlink{class_contour_analis}{Contour\+Analis} class Производит
 Calc\+Probability\+Detection Производит расчет верояности определения знаков исходя из количества найденных контуров для которых функции triagle\+Detection, romb\+Detection, circle\+Detected вернули true;. 
 
 Следовательно, вероятность равная 1 означает, что были обнаружены контуры только одного типа, равная 0 означает,что не было распознано контуров или есть одинаковое количество распознанных контуров разных типов 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em to\+Rect} & Число обнаружений контура ромб \\
 \hline
 {\em to\+Circle} & Число обнаружений контура круг \\
@@ -85,7 +85,7 @@ Calc\+Probability\+Detection Производит расчет вероянос�
 \end{DoxyParams}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 281
+Definition at line 281 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -138,18 +138,18 @@ Calc\+Probability\+Detection Производит расчет вероянос�
 circle\+Detected Проверяет является ли контур кругом -\/ овалом 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image\+With\+Contour} & Изображение с нарисованным контуром \\
 \hline
 {\em contour} & Точки контура \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true если распознан как круг иначе false 
 \end{DoxyReturn}
 В функции используется Hough\+Circles и отнашение площади круга к его окружности
 
-См. определение в файле Contour\+Analis.\+cpp строка 26
+Definition at line 26 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -189,18 +189,18 @@ true если распознан как круг иначе false
 distance Определяет расстояние между двумя точками 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em a} & \\
 \hline
 {\em b} & \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 расстояние d= sqrt((x2−x1)$^\wedge$2+(y2−y1)$^\wedge$2) 
 \end{DoxyReturn}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 272
+Definition at line 272 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -224,13 +224,13 @@ distance Определяет расстояние между двумя точ�
 draw\+Contour Рисует контуры 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em contour} & контуры для отрисовки  \\
 \hline
 \end{DoxyParams}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 3
+Definition at line 3 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -268,13 +268,13 @@ draw\+Contour Рисует контуры
 make\+Analis Производит анализ контуров и выводит результат распознования в консоль 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em contours} & Контуры для распознования \\
 \hline
 \end{DoxyParams}
 
 
-См. определение в файле Contour\+Analis.\+cpp строка 322
+Definition at line 322 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -343,13 +343,13 @@ make\+Analis Производит анализ контуров и выводи�
 romb\+Detection определяет является ли контур или ромбом или квадратом или прямоугольником 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image\+With\+Contour} & Изображение с нарисованным контуром \\
 \hline
 {\em contour} & Точки контура \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true если контур распознан как ромб 
 \end{DoxyReturn}
 \begin{DoxyVerb}         A
@@ -372,7 +372,7 @@ true если контур распознан как ромб
 
 Вычисляется площадь A\+B\+C\+D cv\+::contour\+Area(contour) Вычисляется площадь по S = 1/2 $\ast$ (A\+C$\ast$\+B\+D) Вычисляется delta = cv\+::contour\+Area(contour)/ S Если delta не ревышает заданного значения то распознаётся как ромб
 
-См. определение в файле Contour\+Analis.\+cpp строка 54
+Definition at line 54 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -467,13 +467,13 @@ true если контур распознан как ромб
 triagle\+Detection Определяет является ли полученный контур треугольником 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em image\+With\+Contour} & Изображение с нарисованным контуром \\
 \hline
 {\em contour} & Точки контура \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true если контур распознан как треугольник 
 \end{DoxyReturn}
 \begin{DoxyVerb}    A      H       B
@@ -491,7 +491,7 @@ true если контур распознан как треугольник
 
 треугольник A\+B\+C с высотой С\+H Если расстояние между всеми сторонами одинаковое и если H.\+y не выше (A.\+x + B.\+x)/2 белее чем на A\+B/4 то распознаётся как треугольник Если высоты нет то распознаётся как не треугольник
 
-См. определение в файле Contour\+Analis.\+cpp строка 159
+Definition at line 159 of file Contour\+Analis.\+cpp.
 
 
 \begin{DoxyCode}
@@ -589,7 +589,7 @@ true если контур распознан как треугольник
 \end{DoxyCode}
 
 
-Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{_contour_analis_8h}{Contour\+Analis.\+h}\item 
-\hyperlink{_contour_analis_8cpp}{Contour\+Analis.\+cpp}\end{DoxyCompactItemize}
+/home/takava/\+Qt\+Creator\+Projects/\+Sign\+Determination/\hyperlink{_contour_analis_8h}{Contour\+Analis.\+h}\item 
+/home/takava/\+Qt\+Creator\+Projects/\+Sign\+Determination/\hyperlink{_contour_analis_8cpp}{Contour\+Analis.\+cpp}\end{DoxyCompactItemize}

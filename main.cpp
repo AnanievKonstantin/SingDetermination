@@ -34,6 +34,17 @@
   * O - "Движение запрещено"<BR>
   * N - знак не найден или вероятность найти несколько знаков одинакова
   * <BR>
+  * Для запуска требуюется OpenCV 3.1.0 version <BR>
+  * Со следующими флагами сборки <BR>
+  * OPENCV_EXTRA_MODULES_PATH=opencv_contrib/modules нужен для работы дополнительных функций (GrayWorld, cv::xphoto) <BR>
+  * Ссылка на GitHub на  opencv_contrib https://github.com/Itseez/opencv_contrib <BR>
+  * BUILD_TIFF=ON<BR>
+  * WITH_CUDA=ON <BR>
+  * CUDA_GENERATION=Auto <BR>
+  * WITH_QT=ON <BR>
+  *
+  * ссылка на GitHub исходный код программы: <BR>
+  * https://github.com/AnanievKonstantin/SingDetermination
   */
 
 #include <Controller.h>

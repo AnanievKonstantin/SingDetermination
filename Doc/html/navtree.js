@@ -1,20 +1,20 @@
 var NAVTREE =
 [
-  [ "Распознование знаков", "index.html", [
-    [ "Классы", null, [
-      [ "Классы", "annotated.html", "annotated" ],
-      [ "Алфавитный указатель классов", "classes.html", null ],
-      [ "Члены классов", "functions.html", [
-        [ "Указатель", "functions.html", null ],
-        [ "Функции", "functions_func.html", null ],
-        [ "Переменные", "functions_vars.html", null ]
+  [ "Распознование дорожных знаков", "index.html", [
+    [ "Classes", null, [
+      [ "Class List", "annotated.html", "annotated" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
-    [ "Файлы", null, [
-      [ "Файлы", "files.html", "files" ],
-      [ "Список членов всех файлов", "globals.html", [
-        [ "Указатель", "globals.html", null ],
-        [ "Функции", "globals_func.html", null ]
+    [ "Files", null, [
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
       ] ]
     ] ]
   ] ]
@@ -25,8 +25,8 @@ var NAVTREEINDEX =
 "_contour_analis_8cpp.html"
 ];
 
-var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';
-var SYNCOFFMSG = 'нажмите на включить для синхронизации панелей';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';
 var navTreeSubIndices = new Array();
 
 function getData(varName)
