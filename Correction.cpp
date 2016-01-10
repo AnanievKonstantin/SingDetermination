@@ -223,7 +223,7 @@ vector<cv::Mat> * Correction::makeCorrection(std::string path)
 
     cv::resize(sourceImage, sourceImage, sourceImage.size()*5,cv::INTER_NEAREST);
 
-//    cv::imshow("Start", this->sourceImage);
+    cv::imshow("Start", this->sourceImage);
 
     cv::xphoto::autowbGrayworld(this->sourceImage, this->sourceImage);
 

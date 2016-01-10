@@ -25,6 +25,10 @@ cv::Mat ContourAnalis::drawContour(const vector<cv::Point> &contour)
 
 bool ContourAnalis::circleDetected(cv::Mat &imageWithContour, vector<cv::Point> &contour)
 {
+    /**
+     * В функции используется HoughCircles и отнашение площади круга к его окружности
+     */
+
     vector<cv::Vec3f> circles;
     cv::cvtColor(imageWithContour, imageWithContour, CV_BGR2GRAY);
 
@@ -39,9 +43,9 @@ bool ContourAnalis::circleDetected(cv::Mat &imageWithContour, vector<cv::Point> 
     double area = cv::contourArea(contour);
     double len = cv::arcLength(contour,false);
 
-    cout << "\t\tArea: "<<area <<endl;
-    cout << "\t\tLen: " <<len<< endl;
-    cout << "\t\tarea/len: " << area/(len*len) <<endl;
+//    cout << "\t\tArea: "<<area <<endl;
+//    cout << "\t\tLen: " <<len<< endl;
+//    cout << "\t\tarea/len: " << area/(len*len) <<endl;
 
     if(area/(len*len) >= 0.07 && area/(len*len) <= 0.08) return true;
     return false;
@@ -49,92 +53,98 @@ bool ContourAnalis::circleDetected(cv::Mat &imageWithContour, vector<cv::Point> 
 
 bool ContourAnalis::rombDetection(cv::Mat &imageWithContour, vector<cv::Point> &contour)
 {
-    cv::Point maxX(0,0);
-    cv::Point maxY(0,0);
-    cv::Point minX(imageWithContour.cols,imageWithContour.rows);
-    cv::Point minY(imageWithContour.cols,imageWithContour.rows);
+    /**
+     *              A
+     *               o*
+     *              ****
+     *             ******
+     *            ********
+     *           **********
+     *        B o**********o D
+     *           **********
+     *            ********
+     *             ******
+     *              ****
+     *               *o
+     *                  C
+     *
+     * Определяются точки A,B,C,D
+     * Расчитываются отрезки AB, AD, BC,CD
+     *
+     * Вычисляется площадь ABCD cv::contourArea(contour)
+     * Вычисляется площадь по S = 1/2 * (AC*BD)
+     * Вычисляется delta = cv::contourArea(contour)/ S
+     * Если delta не ревышает заданного значения то распознаётся как ромб
+     */
+
+    cv::Point D(0,0);
+    cv::Point C(0,0);
+    cv::Point B(imageWithContour.cols,imageWithContour.rows);
+    cv::Point A(imageWithContour.cols,imageWithContour.rows);
 
     for(cv::Point & point: contour)
     {
-        if(point.x > maxX.x)
+        if(point.x > D.x)
         {
-            maxX.x = point.x; maxX.y = point.y;
+            D.x = point.x; D.y = point.y;
         }
 
-        if(point.x < minX.x)
+        if(point.x < B.x)
         {
-            minX.x = point.x; minX.y = point.y;
+            B.x = point.x; B.y = point.y;
         }
 
-        if(point.y > maxY.y)
+        if(point.y > C.y)
         {
-            maxY.x = point.x; maxY.y = point.y;
+            C.x = point.x; C.y = point.y;
         }
 
-        if(point.y < minY.y)
+        if(point.y < A.y)
         {
-            minY.x = point.x; minY.y = point.y;
+            A.x = point.x; A.y = point.y;
         }
     }
-    cout << "\t\tmaxX element : " << maxX<< "\n";
-    cout << "\t\tminY element : " << minY<< "\n";
-    cout << "\t\tminX element : " << minX<< "\n";
-    cout << "\t\tmaxY element : " << maxY<< "\n";
+//    cout << "\t\tmaxX element : " << D<< "\n";
+//    cout << "\t\tminY element : " << A<< "\n";
+//    cout << "\t\tminX element : " << B<< "\n";
+//    cout << "\t\tmaxY element : " << C<< "\n";
 
     double areaOfContour = cv::contourArea(contour);
-    cout<<"\t\tareaOfContour" << areaOfContour <<endl;
+//    cout<<"\t\tareaOfContour" << areaOfContour <<endl;
 
-    double lenLeftTop = distance(minY, minX);
-    double lenLeftDown = distance(maxY, minX);
-    double lenRightTop = distance(maxX, minY);
-    double lenRightDown = distance(maxX,maxY);
+    double AB = distance(A, B);
+    double BC = distance(C, B);
+    double AD = distance(D, A);
+    double CD = distance(D, C);
 
-    cout << "\t\tlenLeftTop " << lenLeftTop <<endl;
-    cout << "\t\tlenLeftDown " <<lenLeftDown <<endl;
-    cout << "\t\tlenRightTop " <<lenRightTop <<endl;
-    cout << "\t\tlenRightDown" <<lenRightDown<<endl;
+//    cout << "\t\tAB " << AB <<endl;
+//    cout << "\t\tBC " << BC <<endl;
+//    cout << "\t\tAD " << AD <<endl;
+//    cout << "\t\tCD " << CD<<endl;
 
-    if(lenLeftTop <= 1 || lenLeftDown <= 1 || lenRightDown <= 1 || lenRightTop <= 1)
+    if(AB <= 1 || BC <= 1 || CD <= 1 || AD <= 1)
     {
         return false;
     }
 
-    double areaOfLeftTop    = lenLeftTop*lenLeftTop;
-    double areaOfLeftDown   = lenLeftDown*lenLeftDown;
-    double areaOfRightTop   = lenRightTop*lenRightTop;
-    double areaOfRightDown  = lenRightDown*lenRightDown;
+    double AC = distance(C, A);
+    double BD = distance(B, D);
 
-    cout << "\t\tareaOfLeftTop   " << areaOfLeftTop  <<endl;
-    cout << "\t\tareaOfLeftDown  " << areaOfLeftDown <<endl;
-    cout << "\t\tareaOfRightTop  " << areaOfRightTop <<endl;
-    cout << "\t\tareaOfRightDown " << areaOfRightDown<<endl;
+//    cout <<"AC " << AC <<endl;
+//    cout <<"BD " << BD <<endl;
 
-    double deltaArea0 = areaOfContour - areaOfLeftTop;
-    double deltaArea1 = areaOfContour - areaOfLeftDown;
-    double deltaArea2 = areaOfContour - areaOfRightTop;
-    double deltaArea3 = areaOfContour - areaOfRightDown;
+    double areaOfPoints = (0.5) * (AC*BD);
 
-    cout<<"\t\tdeltaArea0 "<<deltaArea0<<endl;
-    cout<<"\t\tdeltaArea1 "<<deltaArea1<<endl;
-    cout<<"\t\tdeltaArea2 "<<deltaArea2<<endl;
-    cout<<"\t\tdeltaArea3 "<<deltaArea3<<endl;
+//    cout << "areaOfContour "<< areaOfContour <<endl;
+//    cout << "areaOfPoints " << areaOfPoints<<endl;
 
-    if(deltaArea0 <500 && deltaArea1 <500  && deltaArea2 <500  && deltaArea3 <500 )
+    double delta = std::fabs(areaOfContour/areaOfPoints);
+//    cout << "delta " << delta <<endl;
+
+    if(delta < 1.0 || delta > 1.2)
     {
         return false;
     }
-
-
-    double averageAreaOfPoints = (areaOfLeftTop + areaOfLeftDown + areaOfRightTop + areaOfRightDown)/4;
-    cout << "\t\taverageAreaOfPoints/areaOfContour " << averageAreaOfPoints/areaOfContour<<endl;
-    if(averageAreaOfPoints/areaOfContour < 0.7 || averageAreaOfPoints/areaOfContour > 0.9)
-    {
-        return false;
-    }
-
-
-
-
     return true;
 }
 
@@ -229,9 +239,17 @@ bool ContourAnalis::triagleDetection(cv::Mat &imageWithContour, vector<cv::Point
     double relAB_BC = AB/BC;
     double relAC_BC = AC/BC;
 
-    double dRelation = (relAB_AC + relAB_BC + relAC_BC)/3;
+    if(relAB_AC < 0.95 || relAB_AC >1.05)
+    {
+        return false;
+    }
 
-    if(dRelation < 0.95 || dRelation >1.05)
+    if(relAB_BC < 0.95 || relAB_BC >1.05)
+    {
+        return false;
+    }
+
+    if(relAC_BC < 0.95 ||  relAC_BC >1.05)
     {
         return false;
     }
@@ -262,36 +280,48 @@ int ContourAnalis::makeAnalis(list<Storrage *> *contours)
     //cout << "In ANALIS" <<endl;
     int i = 0;
     int imageNumber = 0;
+
+    int isRomb = 0;
+    int isCircle = 0;
+    int isTriagle = 0;
+
     for(Storrage * stor: *contours)
     {
-        cout<< "\t " << imageNumber <<") Изображение: " << endl;
+//        cout<< "\t " << imageNumber <<") Изображение: " << endl;
         imageNumber++;
         for(vector<cv::Point> & vec: *stor->getContours())
         {
-            cout<<"\t\t "<< i <<") Информация о контуре: " << endl;
+//            cout<<"\t\t "<< i <<") Информация о контуре: " << endl;
             cv::Mat contourImage = drawContour(vec);
-//            if(circleDetected(contourImage, vec))
-//            {
+            if(circleDetected(contourImage, vec))
+            {
 //                cout << "\t\tКруг" << endl;
-//            }else
+                isCircle ++;
+            }else
 //                cout << "\t\tНЕ Круг" << endl;
 
-//            if(rombDetection(contourImage, vec))
-//            {
+            if(rombDetection(contourImage, vec))
+            {
 //                cout << "\t\tРомб" << endl;
-//            }else
+                isRomb ++;
+            }else
 //                cout << "\t\tНЕ Ромб" << endl;
 
             if(triagleDetection(contourImage, vec))
             {
-                cout << "\t\tТриугольник" << endl;
+//                cout << "\t\tТриугольник" << endl;
+                isTriagle ++;
             }else
-                cout << "\t\tНE триугольник" << endl;
+//                cout << "\t\tНE триугольник" << endl;
 
             i++;
-            cv::waitKey();
         }
         i = 0;
     }
+
+    cout << "Это круг на: "<<isCircle<<endl;
+    cout << "Это ромб на: "<<isRomb<<endl;
+    cout << "Это триугольник на: "<<isTriagle<<endl;
+    cv::waitKey();
     cv::destroyAllWindows();
 }

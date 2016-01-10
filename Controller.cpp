@@ -2,7 +2,7 @@
 
 Controller::Controller(int argc, char *argv[])
 {
-    string path = "/home/takava/Documents/Study/Works/individual/D/";
+    string path = "/home/takava/Documents/Study/Works/individual/";
     DIR * folder = opendir(path.c_str());
 
     if(folder != NULL)
