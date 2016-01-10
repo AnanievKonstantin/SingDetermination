@@ -34,7 +34,7 @@ list<Storrage * > *  SearchOutlines::search(const vector<cv::Mat> * correctedPic
 //    showPictures("Contrast ", hsvBinChannelsFromContrast);
 //    showPictures("Source ",hsvBinChannelsFromSource);
 
-    //drawContours();
+//    drawContours();
 
 //    cv::waitKey(0);
 //    cv::destroyAllWindows();
